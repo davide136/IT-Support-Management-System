@@ -65,7 +65,7 @@ namespace Manager_riparazioni
             this.button1.TabIndex = 1;
             this.button1.Text = "Nuovo Cliente";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -75,7 +75,7 @@ namespace Manager_riparazioni
             this.button2.TabIndex = 1;
             this.button2.Text = "Elenco Clienti";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -85,7 +85,7 @@ namespace Manager_riparazioni
             this.button3.TabIndex = 1;
             this.button3.Text = "Nuova Riparazione";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
@@ -95,7 +95,7 @@ namespace Manager_riparazioni
             this.button4.TabIndex = 1;
             this.button4.Text = "Archivio Riparazioni";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // label1
             // 
@@ -142,6 +142,7 @@ namespace Manager_riparazioni
             this.button5.TabIndex = 6;
             this.button5.Text = "Connetti";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // menuStrip1
             // 
@@ -184,7 +185,7 @@ namespace Manager_riparazioni
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(178, 34);
             this.optionsToolStripMenuItem.Text = "&Options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.tools_clicked);
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.Tools_clicked);
             // 
             // MainWindows
             // 
