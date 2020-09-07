@@ -28,46 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_save_and_exit = new System.Windows.Forms.Button();
+            this.button_cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_device_model = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_repairtype = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.richTextBox_objective = new System.Windows.Forms.RichTextBox();
+            this.linklabel_repair_id = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.textbox_notes = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_end_repair = new System.Windows.Forms.Button();
+            this.button_open_repair = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label_load_date = new System.Windows.Forms.Label();
+            this.label_end_date = new System.Windows.Forms.Label();
+            this.label_price = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // button_save_and_exit
             // 
-            this.button1.Location = new System.Drawing.Point(911, 742);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 59);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Salva";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_save_and_exit.Location = new System.Drawing.Point(911, 742);
+            this.button_save_and_exit.Name = "button_save_and_exit";
+            this.button_save_and_exit.Size = new System.Drawing.Size(175, 59);
+            this.button_save_and_exit.TabIndex = 4;
+            this.button_save_and_exit.Text = "Salva ed Esci";
+            this.button_save_and_exit.UseVisualStyleBackColor = true;
+            this.button_save_and_exit.Click += new System.EventHandler(this.Save_and_exit_Click);
             // 
-            // button2
+            // button_cancel
             // 
-            this.button2.Location = new System.Drawing.Point(715, 742);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 59);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Annulla";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_cancel.Location = new System.Drawing.Point(715, 742);
+            this.button_cancel.Name = "button_cancel";
+            this.button_cancel.Size = new System.Drawing.Size(175, 59);
+            this.button_cancel.TabIndex = 7;
+            this.button_cancel.Text = "Annulla";
+            this.button_cancel.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -78,13 +77,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Tipo Riparazione";
             // 
-            // textBox2
+            // textBox_device_model
             // 
-            this.textBox2.Location = new System.Drawing.Point(255, 136);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(440, 31);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox_device_model.Location = new System.Drawing.Point(255, 136);
+            this.textBox_device_model.Name = "textBox_device_model";
+            this.textBox_device_model.Size = new System.Drawing.Size(440, 31);
+            this.textBox_device_model.TabIndex = 1;
+            this.textBox_device_model.TextChanged += new System.EventHandler(this.textBox_device_model_TextChanged);
             // 
             // label2
             // 
@@ -95,13 +94,18 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Modello Dispositivo";
             // 
-            // comboBox1
+            // comboBox_repairtype
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(255, 79);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(258, 33);
-            this.comboBox1.TabIndex = 3;
+            this.comboBox_repairtype.FormattingEnabled = true;
+            this.comboBox_repairtype.Items.AddRange(new object[] {
+            "Software",
+            "Hardware",
+            "Vendita",
+            "Preventivo"});
+            this.comboBox_repairtype.Location = new System.Drawing.Point(255, 79);
+            this.comboBox_repairtype.Name = "comboBox_repairtype";
+            this.comboBox_repairtype.Size = new System.Drawing.Size(258, 33);
+            this.comboBox_repairtype.TabIndex = 0;
             // 
             // label3
             // 
@@ -112,23 +116,23 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Difetto / Commissione";
             // 
-            // richTextBox1
+            // richTextBox_objective
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(255, 215);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(831, 127);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
+            this.richTextBox_objective.Location = new System.Drawing.Point(255, 215);
+            this.richTextBox_objective.Name = "richTextBox_objective";
+            this.richTextBox_objective.Size = new System.Drawing.Size(831, 127);
+            this.richTextBox_objective.TabIndex = 2;
+            this.richTextBox_objective.Text = "";
             // 
-            // linkLabel1
+            // linklabel_repair_id
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(932, 82);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(154, 25);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Ticket Riparazione";
+            this.linklabel_repair_id.AutoSize = true;
+            this.linklabel_repair_id.Location = new System.Drawing.Point(932, 82);
+            this.linklabel_repair_id.Name = "linklabel_repair_id";
+            this.linklabel_repair_id.Size = new System.Drawing.Size(154, 25);
+            this.linklabel_repair_id.TabIndex = 5;
+            this.linklabel_repair_id.TabStop = true;
+            this.linklabel_repair_id.Text = "Ticket Riparazione";
             // 
             // label4
             // 
@@ -139,40 +143,40 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Appunti";
             // 
-            // richTextBox2
+            // textbox_notes
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(255, 370);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(831, 210);
-            this.richTextBox2.TabIndex = 4;
-            this.richTextBox2.Text = "";
+            this.textbox_notes.Location = new System.Drawing.Point(255, 370);
+            this.textbox_notes.Name = "textbox_notes";
+            this.textbox_notes.Size = new System.Drawing.Size(831, 210);
+            this.textbox_notes.TabIndex = 3;
+            this.textbox_notes.Text = "";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 705);
+            this.label5.Location = new System.Drawing.Point(38, 722);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(167, 25);
             this.label5.TabIndex = 6;
             this.label5.Text = "Data presa in carico";
             // 
-            // button3
+            // button_end_repair
             // 
-            this.button3.Location = new System.Drawing.Point(911, 624);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(175, 59);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Termina Lavoro";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_end_repair.Location = new System.Drawing.Point(911, 624);
+            this.button_end_repair.Name = "button_end_repair";
+            this.button_end_repair.Size = new System.Drawing.Size(175, 59);
+            this.button_end_repair.TabIndex = 6;
+            this.button_end_repair.Text = "Termina Lavoro";
+            this.button_end_repair.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // button_open_repair
             // 
-            this.button4.Location = new System.Drawing.Point(715, 624);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(175, 59);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Riapri Lavoro";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_open_repair.Location = new System.Drawing.Point(715, 624);
+            this.button_open_repair.Name = "button_open_repair";
+            this.button_open_repair.Size = new System.Drawing.Size(175, 59);
+            this.button_open_repair.TabIndex = 5;
+            this.button_open_repair.Text = "Riapri Lavoro";
+            this.button_open_repair.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -186,84 +190,64 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 745);
+            this.label7.Location = new System.Drawing.Point(39, 759);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(138, 25);
             this.label7.TabIndex = 6;
             this.label7.Text = "Data fine lavoro";
             // 
-            // label8
+            // label_load_date
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(39, 783);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(138, 25);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Data fine lavoro";
+            this.label_load_date.AutoSize = true;
+            this.label_load_date.Location = new System.Drawing.Point(364, 722);
+            this.label_load_date.Name = "label_load_date";
+            this.label_load_date.Size = new System.Drawing.Size(59, 25);
+            this.label_load_date.TabIndex = 8;
+            this.label_load_date.Text = "label9";
             // 
-            // label9
+            // label_end_date
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(364, 705);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 25);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "label9";
+            this.label_end_date.AutoSize = true;
+            this.label_end_date.Location = new System.Drawing.Point(364, 759);
+            this.label_end_date.Name = "label_end_date";
+            this.label_end_date.Size = new System.Drawing.Size(59, 25);
+            this.label_end_date.TabIndex = 8;
+            this.label_end_date.Text = "label9";
             // 
-            // label10
+            // label_price
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(364, 745);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 25);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "label9";
+            this.label_price.AutoSize = true;
+            this.label_price.Location = new System.Drawing.Point(364, 657);
+            this.label_price.Name = "label_price";
+            this.label_price.Size = new System.Drawing.Size(59, 25);
+            this.label_price.TabIndex = 8;
+            this.label_price.Text = "label9";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(364, 783);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 25);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "label9";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(364, 657);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 25);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "label9";
-            // 
-            // Riparazione
+            // Repair
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 846);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label_end_date);
+            this.Controls.Add(this.label_price);
+            this.Controls.Add(this.label_load_date);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.linklabel_repair_id);
+            this.Controls.Add(this.textbox_notes);
+            this.Controls.Add(this.richTextBox_objective);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_repairtype);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "Riparazione";
+            this.Controls.Add(this.textBox_device_model);
+            this.Controls.Add(this.button_open_repair);
+            this.Controls.Add(this.button_end_repair);
+            this.Controls.Add(this.button_cancel);
+            this.Controls.Add(this.button_save_and_exit);
+            this.Name = "Repair";
             this.Text = "Riparazione";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -272,26 +256,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_save_and_exit;
+        private System.Windows.Forms.Button button_cancel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_device_model;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_repairtype;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.RichTextBox richTextBox_objective;
+        private System.Windows.Forms.LinkLabel linklabel_repair_id;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox textbox_notes;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_end_repair;
+        private System.Windows.Forms.Button button_open_repair;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label_load_date;
+        private System.Windows.Forms.Label label_end_date;
+        private System.Windows.Forms.Label label_price;
     }
 }

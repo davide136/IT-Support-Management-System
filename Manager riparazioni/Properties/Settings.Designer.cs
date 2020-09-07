@@ -70,5 +70,329 @@ namespace Manager_riparazioni.Properties {
                 this["DB_Name"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("customers")]
+        public string customers_table_name {
+            get {
+                return ((string)(this["customers_table_name"]));
+            }
+            set {
+                this["customers_table_name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("repairslist")]
+        public string repairs_table_name {
+            get {
+                return ((string)(this["repairs_table_name"]));
+            }
+            set {
+                this["repairs_table_name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("name")]
+        public string col_customer_name {
+            get {
+                return ((string)(this["col_customer_name"]));
+            }
+            set {
+                this["col_customer_name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("surname")]
+        public string col_customer_surname {
+            get {
+                return ((string)(this["col_customer_surname"]));
+            }
+            set {
+                this["col_customer_surname"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("type")]
+        public string col_customer_type {
+            get {
+                return ((string)(this["col_customer_type"]));
+            }
+            set {
+                this["col_customer_type"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("business_name")]
+        public string col_customer_business_name {
+            get {
+                return ((string)(this["col_customer_business_name"]));
+            }
+            set {
+                this["col_customer_business_name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("vat_id_1")]
+        public string col_customer_vat_id_1 {
+            get {
+                return ((string)(this["col_customer_vat_id_1"]));
+            }
+            set {
+                this["col_customer_vat_id_1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("vat_id_2")]
+        public string col_customer_vat_id_2 {
+            get {
+                return ((string)(this["col_customer_vat_id_2"]));
+            }
+            set {
+                this["col_customer_vat_id_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("vat_id_3")]
+        public string col_customer_vat_id_3 {
+            get {
+                return ((string)(this["col_customer_vat_id_3"]));
+            }
+            set {
+                this["col_customer_vat_id_3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("address_street")]
+        public string col_customer_address_street {
+            get {
+                return ((string)(this["col_customer_address_street"]));
+            }
+            set {
+                this["col_customer_address_street"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("address_number")]
+        public string col_customer_address_number {
+            get {
+                return ((string)(this["col_customer_address_number"]));
+            }
+            set {
+                this["col_customer_address_number"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("address_city")]
+        public string col_customer_address_city {
+            get {
+                return ((string)(this["col_customer_address_city"]));
+            }
+            set {
+                this["col_customer_address_city"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("address_region")]
+        public string col_customer_address_region {
+            get {
+                return ((string)(this["col_customer_address_region"]));
+            }
+            set {
+                this["col_customer_address_region"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("phone")]
+        public string col_customer_phone {
+            get {
+                return ((string)(this["col_customer_phone"]));
+            }
+            set {
+                this["col_customer_phone"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mail_address")]
+        public string col_customer_mail_address {
+            get {
+                return ((string)(this["col_customer_mail_address"]));
+            }
+            set {
+                this["col_customer_mail_address"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("repair_type")]
+        public string col_repairs_type {
+            get {
+                return ((string)(this["col_repairs_type"]));
+            }
+            set {
+                this["col_repairs_type"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("device_model")]
+        public string col_repairs_device_model {
+            get {
+                return ((string)(this["col_repairs_device_model"]));
+            }
+            set {
+                this["col_repairs_device_model"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("objective")]
+        public string col_repairs_objective {
+            get {
+                return ((string)(this["col_repairs_objective"]));
+            }
+            set {
+                this["col_repairs_objective"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("notes")]
+        public string col_repairs_notes {
+            get {
+                return ((string)(this["col_repairs_notes"]));
+            }
+            set {
+                this["col_repairs_notes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("result")]
+        public string col_repairs_result {
+            get {
+                return ((string)(this["col_repairs_result"]));
+            }
+            set {
+                this["col_repairs_result"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("price")]
+        public string col_repairs_price {
+            get {
+                return ((string)(this["col_repairs_price"]));
+            }
+            set {
+                this["col_repairs_price"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("is_sold_from_me")]
+        public string col_repairs_is_sold_from_me {
+            get {
+                return ((string)(this["col_repairs_is_sold_from_me"]));
+            }
+            set {
+                this["col_repairs_is_sold_from_me"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("date_start")]
+        public string col_repairs_date_start {
+            get {
+                return ((string)(this["col_repairs_date_start"]));
+            }
+            set {
+                this["col_repairs_date_start"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("date_end")]
+        public string col_repairs_date_end {
+            get {
+                return ((string)(this["col_repairs_date_end"]));
+            }
+            set {
+                this["col_repairs_date_end"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("id_customer")]
+        public string col_repairs_id_customer {
+            get {
+                return ((string)(this["col_repairs_id_customer"]));
+            }
+            set {
+                this["col_repairs_id_customer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("id_customers")]
+        public string col_customers_customer_id {
+            get {
+                return ((string)(this["col_customers_customer_id"]));
+            }
+            set {
+                this["col_customers_customer_id"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("id_repair")]
+        public string col_repairs_id_repair {
+            get {
+                return ((string)(this["col_repairs_id_repair"]));
+            }
+            set {
+                this["col_repairs_id_repair"] = value;
+            }
+        }
     }
 }

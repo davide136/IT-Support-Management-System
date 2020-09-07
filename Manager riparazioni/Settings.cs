@@ -13,22 +13,9 @@ namespace Manager_riparazioni
 {
     public partial class Settings : Form
     {
-
-        /*
-                Properties.Settings.Default.URI_Database
-                Properties.Settings.Default.Username
-                Properties.Settings.Default.Password
-         */
-
-
-
         public Settings()
         {
             InitializeComponent();
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void Load_Settings(object sender, EventArgs e)
@@ -55,15 +42,6 @@ namespace Manager_riparazioni
             Properties.Settings.Default.Save();
         }
 
-        private void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-            textbox_password.PasswordChar = '*';
-        }
-
-        private void TextBox2_TextChanged(object sender, EventArgs e)
-        {    
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -84,11 +62,6 @@ namespace Manager_riparazioni
             ConnectionResult connectionResult = new ConnectionResult(isConnect);
             connectionResult.Show();
             dbCon.Disconnect();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

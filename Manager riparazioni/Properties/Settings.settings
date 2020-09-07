@@ -14,5 +14,86 @@
     <Setting Name="DB_Name" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="customers_table_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">customers</Value>
+    </Setting>
+    <Setting Name="repairs_table_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">repairslist</Value>
+    </Setting>
+    <Setting Name="col_customer_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">name</Value>
+    </Setting>
+    <Setting Name="col_customer_surname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">surname</Value>
+    </Setting>
+    <Setting Name="col_customer_type" Type="System.String" Scope="User">
+      <Value Profile="(Default)">type</Value>
+    </Setting>
+    <Setting Name="col_customer_business_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">business_name</Value>
+    </Setting>
+    <Setting Name="col_customer_vat_id_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vat_id_1</Value>
+    </Setting>
+    <Setting Name="col_customer_vat_id_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vat_id_2</Value>
+    </Setting>
+    <Setting Name="col_customer_vat_id_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vat_id_3</Value>
+    </Setting>
+    <Setting Name="col_customer_address_street" Type="System.String" Scope="User">
+      <Value Profile="(Default)">address_street</Value>
+    </Setting>
+    <Setting Name="col_customer_address_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">address_number</Value>
+    </Setting>
+    <Setting Name="col_customer_address_city" Type="System.String" Scope="User">
+      <Value Profile="(Default)">address_city</Value>
+    </Setting>
+    <Setting Name="col_customer_address_region" Type="System.String" Scope="User">
+      <Value Profile="(Default)">address_region</Value>
+    </Setting>
+    <Setting Name="col_customer_phone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">phone</Value>
+    </Setting>
+    <Setting Name="col_customer_mail_address" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mail_address</Value>
+    </Setting>
+    <Setting Name="col_repairs_type" Type="System.String" Scope="User">
+      <Value Profile="(Default)">repair_type</Value>
+    </Setting>
+    <Setting Name="col_repairs_device_model" Type="System.String" Scope="User">
+      <Value Profile="(Default)">device_model</Value>
+    </Setting>
+    <Setting Name="col_repairs_objective" Type="System.String" Scope="User">
+      <Value Profile="(Default)">objective</Value>
+    </Setting>
+    <Setting Name="col_repairs_notes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">notes</Value>
+    </Setting>
+    <Setting Name="col_repairs_result" Type="System.String" Scope="User">
+      <Value Profile="(Default)">result</Value>
+    </Setting>
+    <Setting Name="col_repairs_price" Type="System.String" Scope="User">
+      <Value Profile="(Default)">price</Value>
+    </Setting>
+    <Setting Name="col_repairs_is_sold_from_me" Type="System.String" Scope="User">
+      <Value Profile="(Default)">is_sold_from_me</Value>
+    </Setting>
+    <Setting Name="col_repairs_date_start" Type="System.String" Scope="User">
+      <Value Profile="(Default)">date_start</Value>
+    </Setting>
+    <Setting Name="col_repairs_date_end" Type="System.String" Scope="User">
+      <Value Profile="(Default)">date_end</Value>
+    </Setting>
+    <Setting Name="col_repairs_id_customer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">id_customer</Value>
+    </Setting>
+    <Setting Name="col_customers_customer_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">id_customers</Value>
+    </Setting>
+    <Setting Name="col_repairs_id_repair" Type="System.String" Scope="User">
+      <Value Profile="(Default)">id_repair</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

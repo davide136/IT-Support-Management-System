@@ -56,6 +56,17 @@ namespace Manager_riparazioni.Util
 
         }
 
-
+        public Boolean AddItem(String name)
+        {
+            if (connection != null)
+            {
+                string query = "INSERT INTO temp(tempcol) VALUES(?tempcol)";
+                var cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.Add("?tempcol", MySqlDbType.VarChar).Value = name;
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            else return false;
+        }
     }
 }
