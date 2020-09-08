@@ -168,6 +168,7 @@
             this.button_end_repair.TabIndex = 6;
             this.button_end_repair.Text = "Termina Lavoro";
             this.button_end_repair.UseVisualStyleBackColor = true;
+            this.button_end_repair.Click += new System.EventHandler(this.button_end_repair_Click);
             // 
             // button_open_repair
             // 

@@ -12,9 +12,11 @@ namespace Manager_riparazioni
 {
     public partial class Repair : Form
     {
-        Object customer_id;
-        Object repair_id;
+        object customer_id;
+        object repair_id;
         DBConnection dBConnection = DBConnection.Instance();
+        string price;
+        string end_date;
 
         public Repair(Object customer_id, Object repair_id)
         {
@@ -109,29 +111,57 @@ namespace Manager_riparazioni
         private void queryUpdateRepair()
         {            
             String device_model = textBox_device_model.Text;
-
             String repair_type = comboBox_repairtype.SelectedIndex.ToString();
+            String objective = richTextBox_objective.Text;
+            String notes = textbox_notes.Text;
+
             String repair_type_col = "";
+            String objective_col = "";
+            String notes_col = "";
+            String end_date_col = "";
+            String price_col = "";
+
             if (repair_type != "")
             {
-                repair_type = "`=\"" + repair_type + "\",";
+                if(end_date != "" || price != "" || notes != ""||objective!="")
+                    repair_type = "`=\"" + repair_type + "\",";
+                else 
+                    repair_type = "`=\"" + repair_type + "\"";
+
                 repair_type_col = "`" + Properties.Settings.Default.col_repairs_type;
             }
 
-            String objective = richTextBox_objective.Text;
-            String objective_col = "";
             if (objective != "")
             {
-                objective = "`=\"" + objective + "\",";
+                if(end_date != "" || price != ""||notes!="")
+                    objective = "`=\"" + objective + "\",";
+                else
+                    objective = "`=\"" + objective + "\"";
                 objective_col = "`" + Properties.Settings.Default.col_repairs_objective;
             }
 
-            String notes = textbox_notes.Text;
-            String notes_col = "";
             if (notes != "")
             {
-                notes = "`=\"" + notes + "\"";
+                if(end_date!=""||price!="")
+                    notes = "`=\"" + notes + "\",";
+                else
+                    notes = "`=\"" + notes + "\"";
                 notes_col = "`" + Properties.Settings.Default.col_repairs_notes;
+            }
+
+            if(price != "")
+            {
+                if(end_date!="")
+                    price = "`=\"€ " + price + "\",";
+                else
+                    price = "`=\"" + price + "\"";
+                price_col = "`" + Properties.Settings.Default.col_repairs_price;
+            }
+
+            if (end_date != "")
+            {
+                end_date = "`=\"" + end_date + "\",";
+                end_date_col = "`" + Properties.Settings.Default.col_repairs_date_end;
             }
 
 
@@ -144,6 +174,8 @@ namespace Manager_riparazioni
                  + repair_type_col + repair_type
                  + objective_col + objective
                  + notes_col + notes
+                 + price_col + price
+                 + end_date_col + end_date 
                  + " WHERE `"
                  + Properties.Settings.Default.col_repairs_id_repair 
                  + "`="
@@ -196,10 +228,7 @@ namespace Manager_riparazioni
                  ",`"
                 + Properties.Settings.Default.col_repairs_notes + "`";
             }
-        
-
-
-
+            
             string query =
                 "INSERT INTO `" + Properties.Settings.Default.repairs_table_name
                 + "` (`"
@@ -230,6 +259,14 @@ namespace Manager_riparazioni
             if (textBox_device_model.TextLength != 0)
                 button_save_and_exit.Enabled = true;
             else button_save_and_exit.Enabled = false;
+        }
+
+        private void button_end_repair_Click(object sender, EventArgs e)
+        {
+            SetPrice setPrice = new SetPrice();
+            setPrice.Show();
+            price = "" + setPrice.Price;
+            end_date = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
         }
     }
 }
