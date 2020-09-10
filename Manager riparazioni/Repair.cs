@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -15,8 +17,8 @@ namespace Manager_riparazioni
         object customer_id;
         object repair_id;
         DBConnection dBConnection = DBConnection.Instance();
-        string price;
-        string end_date;
+        string price = "";
+        string end_date = "";
 
         public Repair(Object customer_id, Object repair_id)
         {
@@ -53,13 +55,23 @@ namespace Manager_riparazioni
                 ", " +
                 Properties.Settings.Default.repairs_table_name +
                 "." +
-                Properties.Settings.Default.col_repairs_result +
+                Properties.Settings.Default.col_repairs_date_end +
+                ", " +
+                Properties.Settings.Default.repairs_table_name +
+                "." +
+                Properties.Settings.Default.col_repairs_price +
+                ", " +
+                Properties.Settings.Default.repairs_table_name +
+                "." +
+                Properties.Settings.Default.col_repairs_id_repair +
                 " from " +
                 Properties.Settings.Default.repairs_table_name +
                 " where " +
                 Properties.Settings.Default.col_repairs_id_repair +
                 " = " +
                 repair_id.ToString() ;
+
+            Debug.WriteLine("Load query: "+query);
 
             var cmd = new MySqlCommand(query, dBConnection.Connection);
 
@@ -87,11 +99,27 @@ namespace Manager_riparazioni
                 if (!reader.IsDBNull(4))
                     load_date = reader.GetString(4);
 
-                comboBox_repairtype.SelectedItem = type;
+                String date_end = "";
+                if (!reader.IsDBNull(5))
+                    date_end = reader.GetString(5);
+
+                String lb_price = "";
+                if (!reader.IsDBNull(6))
+                    lb_price = reader.GetString(6);
+
+                String id = "";
+                if (!reader.IsDBNull(7))
+                    id = reader.GetString(7);
+
+
+                comboBox_repairtype.SelectedIndex = int.Parse(type);
                 textBox_device_model.Text = device_model;
                 richTextBox_objective.Text = objective;
                 textbox_notes.Text = notes;
                 label_load_date.Text = load_date;
+                label_end_date.Text = date_end;
+                label_price.Text = lb_price;
+                linklabel_repair_id.Text = id;
             }
             reader.Close();
         }
@@ -149,22 +177,19 @@ namespace Manager_riparazioni
                 notes_col = "`" + Properties.Settings.Default.col_repairs_notes;
             }
 
-            if(price != "")
-            {
-                if(end_date!="")
-                    price = "`=\"€ " + price + "\",";
-                else
-                    price = "`=\"" + price + "\"";
+            if(end_date!="" && !price.Contains("€"))
+                price = "`=\"€ " + price + "\",";
+            if(end_date == "" && !price.Contains("€") && price != "")
+                price = "`=\"" + price + "\"";
+            if(price!=""&&price_col=="")
                 price_col = "`" + Properties.Settings.Default.col_repairs_price;
-            }
+            
 
             if (end_date != "")
             {
-                end_date = "`=\"" + end_date + "\",";
+                end_date = "`=\"" + end_date + "\"";
                 end_date_col = "`" + Properties.Settings.Default.col_repairs_date_end;
             }
-
-
 
 
             string query =
@@ -180,26 +205,34 @@ namespace Manager_riparazioni
                  + Properties.Settings.Default.col_repairs_id_repair 
                  + "`="
                  +repair_id.ToString();
-
+            Debug.WriteLine("Update Query: "+query);
             var reader = new MySqlCommand(query, dBConnection.Connection).ExecuteReader();
             reader.Close();
+            price = "";
         }
 
         private void queryNewRepair()
         {
             String repair_type = comboBox_repairtype.SelectedIndex.ToString();
+            String objective = richTextBox_objective.Text;
+            String device_model = textBox_device_model.Text;
+            String notes = textbox_notes.Text;
+
             String repair_type_col = "";
+            String device_model_col = "";
+            String objective_col = "";
+            String notes_col = "";
+
             if (repair_type != "")
             {
-                repair_type = "," + repair_type;
+                repair_type = "," + repair_type ;
                 repair_type_col =
                  ",`"
                 + Properties.Settings.Default.col_repairs_type + "`";
             }
 
 
-            String device_model = textBox_device_model.Text;
-            String device_model_col = "";
+            
             if (device_model != "")
             {
                 device_model = ",\"" + device_model + "\"";
@@ -209,8 +242,7 @@ namespace Manager_riparazioni
             }            
           
 
-            String objective = richTextBox_objective.Text;
-            String objective_col = "";
+            
             if (objective != "")
             {
                 objective = ",\"" + objective + "\"";
@@ -219,8 +251,7 @@ namespace Manager_riparazioni
                 + Properties.Settings.Default.col_repairs_objective + "`";
             }
 
-            String notes = textbox_notes.Text;
-            String notes_col = "";
+            
             if (notes != "")
             {
                 notes = ",\"" + notes + "\"";
@@ -250,6 +281,8 @@ namespace Manager_riparazioni
                 + ","
                 + customer_id
                 + ')';
+
+            Debug.WriteLine(query);
             var reader = new MySqlCommand(query, dBConnection.Connection).ExecuteReader();
             reader.Close();
         }
@@ -263,10 +296,23 @@ namespace Manager_riparazioni
 
         private void button_end_repair_Click(object sender, EventArgs e)
         {
-            SetPrice setPrice = new SetPrice();
-            setPrice.Show();
-            price = "" + setPrice.Price;
-            end_date = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
+            ShowSetPriceBox();
+            end_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            queryUpdateRepair();
+            end_date = "";
+        }
+
+        public void ShowSetPriceBox()
+        {
+            SetPrice testDialog = new SetPrice();
+
+            // Show testDialog as a modal dialog and determine if DialogResult = OK.
+            if (testDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // Read the contents of testDialog's TextBox.
+                price = testDialog.Textbox_price.Text;
+            }
+            testDialog.Dispose();
         }
     }
 }

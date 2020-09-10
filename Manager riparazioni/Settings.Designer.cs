@@ -39,11 +39,12 @@
             this.button_test = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textbox_db_name = new System.Windows.Forms.TextBox();
+            this.checkbox_autoconnect = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button_save_and_exit
             // 
-            this.button_save_and_exit.Location = new System.Drawing.Point(580, 320);
+            this.button_save_and_exit.Location = new System.Drawing.Point(581, 380);
             this.button_save_and_exit.Name = "button_save_and_exit";
             this.button_save_and_exit.Size = new System.Drawing.Size(223, 67);
             this.button_save_and_exit.TabIndex = 6;
@@ -53,7 +54,7 @@
             // 
             // button_cancel
             // 
-            this.button_cancel.Location = new System.Drawing.Point(331, 320);
+            this.button_cancel.Location = new System.Drawing.Point(332, 380);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(223, 67);
             this.button_cancel.TabIndex = 7;
@@ -135,11 +136,23 @@
             this.textbox_db_name.Size = new System.Drawing.Size(274, 31);
             this.textbox_db_name.TabIndex = 2;
             // 
+            // checkbox_autoconnect
+            // 
+            this.checkbox_autoconnect.AutoSize = true;
+            this.checkbox_autoconnect.Location = new System.Drawing.Point(51, 295);
+            this.checkbox_autoconnect.Name = "checkbox_autoconnect";
+            this.checkbox_autoconnect.Size = new System.Drawing.Size(190, 29);
+            this.checkbox_autoconnect.TabIndex = 8;
+            this.checkbox_autoconnect.Text = "Connect on startup";
+            this.checkbox_autoconnect.UseVisualStyleBackColor = true;
+            this.checkbox_autoconnect.CheckedChanged += new System.EventHandler(this.checkbox_autoconnect_CheckedChanged);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 436);
+            this.ClientSize = new System.Drawing.Size(865, 504);
+            this.Controls.Add(this.checkbox_autoconnect);
             this.Controls.Add(this.button_test);
             this.Controls.Add(this.textbox_password);
             this.Controls.Add(this.label3);
@@ -153,7 +166,6 @@
             this.Controls.Add(this.button_save_and_exit);
             this.Name = "Settings";
             this.Text = "Settings";
-            this.Load += new System.EventHandler(this.Load_Settings);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Button button_test;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textbox_db_name;
+        private System.Windows.Forms.CheckBox checkbox_autoconnect;
     }
 }

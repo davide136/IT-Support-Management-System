@@ -16,15 +16,13 @@ namespace Manager_riparazioni
         public Settings()
         {
             InitializeComponent();
-        }
-
-        private void Load_Settings(object sender, EventArgs e)
-        {
             textbox_db_uri.Text = Properties.Settings.Default.URI_Database;
             textbox_username.Text = Properties.Settings.Default.Username;
             textbox_password.Text = Properties.Settings.Default.Password;
             textbox_db_name.Text = Properties.Settings.Default.DB_Name;
+            checkbox_autoconnect.Checked = Properties.Settings.Default.autostart;
         }
+
 
         private void Btn_Save_Click(object sender, EventArgs e)
         {
@@ -62,6 +60,11 @@ namespace Manager_riparazioni
             ConnectionResult connectionResult = new ConnectionResult(isConnect);
             connectionResult.Show();
             dbCon.Disconnect();
+        }
+
+        private void checkbox_autoconnect_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.autostart = checkbox_autoconnect.Checked;
         }
     }
 }

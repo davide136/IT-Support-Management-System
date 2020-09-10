@@ -133,6 +133,7 @@
             this.linklabel_repair_id.TabIndex = 5;
             this.linklabel_repair_id.TabStop = true;
             this.linklabel_repair_id.Text = "Ticket Riparazione";
+            this.linklabel_repair_id.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label4
             // 
@@ -200,29 +201,32 @@
             // label_load_date
             // 
             this.label_load_date.AutoSize = true;
-            this.label_load_date.Location = new System.Drawing.Point(364, 722);
+            this.label_load_date.Location = new System.Drawing.Point(389, 722);
             this.label_load_date.Name = "label_load_date";
-            this.label_load_date.Size = new System.Drawing.Size(59, 25);
+            this.label_load_date.Size = new System.Drawing.Size(128, 25);
             this.label_load_date.TabIndex = 8;
-            this.label_load_date.Text = "label9";
+            this.label_load_date.Text = "NON INIZIATO";
+            this.label_load_date.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label_end_date
             // 
             this.label_end_date.AutoSize = true;
             this.label_end_date.Location = new System.Drawing.Point(364, 759);
             this.label_end_date.Name = "label_end_date";
-            this.label_end_date.Size = new System.Drawing.Size(59, 25);
+            this.label_end_date.Size = new System.Drawing.Size(153, 25);
             this.label_end_date.TabIndex = 8;
-            this.label_end_date.Text = "label9";
+            this.label_end_date.Text = "NON TERMINATO";
+            this.label_end_date.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label_price
             // 
             this.label_price.AutoSize = true;
-            this.label_price.Location = new System.Drawing.Point(364, 657);
+            this.label_price.Location = new System.Drawing.Point(295, 657);
             this.label_price.Name = "label_price";
-            this.label_price.Size = new System.Drawing.Size(59, 25);
+            this.label_price.Size = new System.Drawing.Size(218, 25);
             this.label_price.TabIndex = 8;
-            this.label_price.Text = "label9";
+            this.label_price.Text = "COSTO NON ASSEGNATO";
+            this.label_price.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Repair
             // 

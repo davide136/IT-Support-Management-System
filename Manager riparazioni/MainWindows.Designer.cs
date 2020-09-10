@@ -45,11 +45,12 @@ namespace Manager_riparazioni
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repair_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_business_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_date_end = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_device = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_obj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.checkbox_hide_finnished = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -175,11 +176,11 @@ namespace Manager_riparazioni
             // 
             // repair_id
             // 
-            this.repair_id.HeaderText = "repair_id";
+            this.repair_id.HeaderText = "Rep. ID";
             this.repair_id.MinimumWidth = 8;
             this.repair_id.Name = "repair_id";
             this.repair_id.ReadOnly = true;
-            this.repair_id.Visible = false;
+            this.repair_id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.repair_id.Width = 150;
             // 
             // col_name
@@ -191,14 +192,23 @@ namespace Manager_riparazioni
             this.col_name.ReadOnly = true;
             this.col_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // col_business_name
+            // col_date
             // 
-            this.col_business_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_business_name.HeaderText = "Business Name";
-            this.col_business_name.MinimumWidth = 8;
-            this.col_business_name.Name = "col_business_name";
-            this.col_business_name.ReadOnly = true;
-            this.col_business_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_date.HeaderText = "Date Start";
+            this.col_date.MinimumWidth = 8;
+            this.col_date.Name = "col_date";
+            this.col_date.ReadOnly = true;
+            this.col_date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // col_date_end
+            // 
+            this.col_date_end.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_date_end.HeaderText = "Date End";
+            this.col_date_end.MinimumWidth = 8;
+            this.col_date_end.Name = "col_date_end";
+            this.col_date_end.ReadOnly = true;
+            this.col_date_end.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // col_device
             // 
@@ -218,42 +228,46 @@ namespace Manager_riparazioni
             this.col_obj.ReadOnly = true;
             this.col_obj.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // col_date
-            // 
-            this.col_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_date.HeaderText = "Date Start";
-            this.col_date.MinimumWidth = 8;
-            this.col_date.Name = "col_date";
-            this.col_date.ReadOnly = true;
-            this.col_date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowDrop = true;
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.repair_id,
             this.col_name,
-            this.col_business_name,
+            this.col_date,
+            this.col_date_end,
             this.col_device,
-            this.col_obj,
-            this.col_date});
+            this.col_obj});
             this.dataGridView1.Location = new System.Drawing.Point(60, 190);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1298, 410);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.Text = "dataGridView1";
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // checkbox_hide_finnished
+            // 
+            this.checkbox_hide_finnished.AutoSize = true;
+            this.checkbox_hide_finnished.Enabled = false;
+            this.checkbox_hide_finnished.Location = new System.Drawing.Point(60, 628);
+            this.checkbox_hide_finnished.Name = "checkbox_hide_finnished";
+            this.checkbox_hide_finnished.Size = new System.Drawing.Size(142, 29);
+            this.checkbox_hide_finnished.TabIndex = 1;
+            this.checkbox_hide_finnished.Text = "Hide finished";
+            this.checkbox_hide_finnished.UseVisualStyleBackColor = true;
+            this.checkbox_hide_finnished.CheckedChanged += new System.EventHandler(this.checkbox_hide_finnished_CheckedChanged);
             // 
             // MainWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 805);
+            this.Controls.Add(this.checkbox_hide_finnished);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_connect);
             this.Controls.Add(this.label_status);
@@ -292,9 +306,10 @@ namespace Manager_riparazioni
         private System.Windows.Forms.DataGridView dataGridView1;
         private DataGridViewTextBoxColumn repair_id;
         private DataGridViewTextBoxColumn col_name;
-        private DataGridViewTextBoxColumn col_business_name;
+        private DataGridViewTextBoxColumn col_date;
+        private DataGridViewTextBoxColumn col_date_end;
         private DataGridViewTextBoxColumn col_device;
         private DataGridViewTextBoxColumn col_obj;
-        private DataGridViewTextBoxColumn col_date;
+        private CheckBox checkbox_hide_finnished;
     }
 }

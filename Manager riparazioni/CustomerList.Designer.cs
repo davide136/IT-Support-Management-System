@@ -70,6 +70,7 @@
             this.button_edit_row.TabIndex = 1;
             this.button_edit_row.Text = "Modifica";
             this.button_edit_row.UseVisualStyleBackColor = true;
+            this.button_edit_row.Click += new System.EventHandler(this.button_edit_row_Click);
             // 
             // button_delete_row
             // 
@@ -79,6 +80,7 @@
             this.button_delete_row.TabIndex = 1;
             this.button_delete_row.Text = "Elimina";
             this.button_delete_row.UseVisualStyleBackColor = true;
+            this.button_delete_row.Click += new System.EventHandler(this.button_delete_row_Click);
             // 
             // col_index
             // 
@@ -155,6 +157,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(965, 434);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.Text = "dataGridView1";
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_DoubleClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.RowsSelectionChanged);
             // 
             // CustomerList

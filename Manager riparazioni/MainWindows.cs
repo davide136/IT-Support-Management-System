@@ -23,6 +23,8 @@ namespace Manager_riparazioni
             label_uri.Text = Properties.Settings.Default.URI_Database;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             UpdateUI();
+            if (Properties.Settings.Default.autostart)
+                Connect_Click(null,null);
         }
 
         private void UpdateUI()
@@ -42,6 +44,7 @@ namespace Manager_riparazioni
             button_customers_list.Enabled = isConnect;
             button_new_customer.Enabled = isConnect;
             button_repairs__archive.Enabled = isConnect;
+            checkbox_hide_finnished.Enabled = isConnect;
         }
 
         private void MnuExit_Clicked(object sender, EventArgs e)
@@ -114,38 +117,52 @@ namespace Manager_riparazioni
 
             string query = "" +
                 "select " +
+                // REPAIR ID
                 Properties.Settings.Default.repairs_table_name +
                 "." +
                 Properties.Settings.Default.col_repairs_id_repair +
                 ", " +
+                //NAME
                 Properties.Settings.Default.customers_table_name +
                 "." +
                 Properties.Settings.Default.col_customer_name +
                 ", " +
+                //SURNNAME
+                Properties.Settings.Default.customers_table_name +
+                "." +
+                Properties.Settings.Default.col_customer_surname +
+                ", " +
+                //BUSINESS NAME
                 Properties.Settings.Default.customers_table_name +
                 "." +
                 Properties.Settings.Default.col_customer_business_name +
                 ", " +
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_device_model +
-                ", " +
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_objective +
-                ", " +
+                //START
                 Properties.Settings.Default.repairs_table_name +
                 "." +
                 Properties.Settings.Default.col_repairs_date_start +
                 ", " +
+                //END
                 Properties.Settings.Default.repairs_table_name +
                 "." +
-                Properties.Settings.Default.col_repairs_result +
+                Properties.Settings.Default.col_repairs_date_end +
+                ", " +
+                //DEVICE MODEL
+                Properties.Settings.Default.repairs_table_name +
+                "." +
+                Properties.Settings.Default.col_repairs_device_model +
+                ", " +
+                //OBJECTIVE
+                Properties.Settings.Default.repairs_table_name +
+                "." +
+                Properties.Settings.Default.col_repairs_objective +
                 " from " +
+                //TABLE NAME
                 Properties.Settings.Default.customers_table_name +
                 ", " +
                 Properties.Settings.Default.repairs_table_name +
                 " where " +
+                //CONDITION
                 Properties.Settings.Default.col_repairs_id_customer +
                 " = " +
                 Properties.Settings.Default.col_customers_customer_id;
@@ -157,32 +174,39 @@ namespace Manager_riparazioni
             {
                 String repair_id = reader.GetString(0);
                 String name = "";
+                String s1 = "", s2 = "", s3 = "";
                 if (!reader.IsDBNull(1))
-                    name = reader.GetString(1);
-
-                String business_name = "";
+                    s1 = reader.GetString(1);
                 if (!reader.IsDBNull(2))
-                    business_name = reader.GetString(2);
-                              
-                String device_model = "";
+                    s2 = reader.GetString(2);
                 if (!reader.IsDBNull(3))
-                    device_model = reader.GetString(3);
+                    s3 = reader.GetString(3);
+                name = GetName(s1,s2,s3);
+
+                String date_start = "";
+                if (!reader.IsDBNull(4))
+                    date_start = reader.GetString(4);
+
+                String date_end = "";
+                if (!reader.IsDBNull(5))
+                    date_end = reader.GetString(5);
+
+                String device_model = "";
+                if (!reader.IsDBNull(6))
+                    device_model = reader.GetString(6);
 
                 String objective = "";
-                if (!reader.IsDBNull(4))
-                    objective = reader.GetString(4);
+                if (!reader.IsDBNull(7))
+                    objective = reader.GetString(7);
 
-                String date = "";
-                if (!reader.IsDBNull(5))
-                    date = reader.GetString(5);
 
                 dataGridView1.Rows.Add(
                     repair_id,
                     name,
-                    business_name,
+                    date_start,
+                    date_end,
                     device_model,
-                    objective,
-                    date
+                    objective
                     );
             }
             reader.Close();
@@ -190,11 +214,34 @@ namespace Manager_riparazioni
             dataGridView1.AutoResizeColumnHeadersHeight();
         }
 
+        private string GetName(string name, string surname, string business)
+        {
+            String result = "";
+            //has name or surname but no business name
+            if (business == "" && (name != "" || surname != ""))
+                result = surname + " " + name;
+            //has name or surname and business name
+            else if (business != "" && (name != "" || surname != ""))
+                result = business +" Ref. " + name + " " +surname;
+            //only has business name
+            else if (business != "" && name == "" && surname == "")
+                result = business;
+
+            return result;
+        }
+
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Object repair_index = dataGridView1.CurrentRow.Cells[0].Value;
             Repair repair = new Repair(null,repair_index);
             repair.Show();
+        }
+
+        private void checkbox_hide_finnished_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+                if (dr.Cells[3].Value.ToString() != "")
+                    dr.Visible = !checkbox_hide_finnished.Checked;
         }
     }
 }
