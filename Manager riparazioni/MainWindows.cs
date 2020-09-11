@@ -21,7 +21,6 @@ namespace Manager_riparazioni
         {
             InitializeComponent();
             label_uri.Text = Properties.Settings.Default.URI_Database;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             UpdateUI();
             if (Properties.Settings.Default.autostart)
                 Connect_Click(null,null);

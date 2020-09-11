@@ -126,7 +126,10 @@ namespace Manager_riparazioni
             
             if (dBConnection.IsConnect())
             {
-                queryNewUser();          
+                if (customer_index == null)
+                    queryNewUser();
+                else
+                    updateUser();
             }
                                  
             this.Close();
@@ -294,6 +297,173 @@ namespace Manager_riparazioni
                 + phone
                 + mail
                 + ')';
+            var reader = new MySqlCommand(query, dBConnection.Connection).ExecuteReader();
+            reader.Close();
+        }
+        private void updateUser()
+        {
+            String surname = textbox_surname.Text;
+            String surname_col = "";
+            String type = combobox_clienttype.SelectedIndex.ToString();
+            String type_col = "";
+            String business_name = textBox_business_name.Text;
+            String business_name_col = "";
+            String vat_id_1 = textBox_vat_id.Text;
+            String vat_id_1_col = "";
+            String vat_id_2 = textBox_vat_id_2.Text;
+            String vat_id_2_col = "";
+            String vat_id_3 = textBox_vat_id_3.Text;
+            String vat_id_3_col = "";
+            String address_street = textBox_address_route.Text;
+            String address_street_col = "";
+            String number = textBox_address_number.Text;
+            String number_col = "";
+            String city = textBox_address_city.Text;
+            String city_col = "";
+            String region = textBox_address_region.Text;
+            String region_col = "";
+            String phone = textBox_phone.Text;
+            String phone_col = "";
+            String mail = textBox_mail_address.Text;
+            String mail_col = "";
+
+            if (surname != "")
+            {
+                surname = "\"" + surname + "\"";
+                surname_col =
+                ",`"
+                + Properties.Settings.Default.col_customer_surname + "`=";
+            }
+
+            if (type != "")
+            {
+                type_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_type + "`=";
+            }
+
+            if (business_name != "")
+            {
+                business_name = "\"" + business_name + "\"";
+                business_name_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_business_name + "`=";
+            }
+
+            if (vat_id_1 != "")
+            {
+                vat_id_1 = "\"" + vat_id_1 + "\"";
+                vat_id_1_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_vat_id_1 + "`=";
+            }
+
+            if (vat_id_2 != "")
+            {
+                vat_id_2 = "\"" + vat_id_2 + "\"";
+                vat_id_2_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_vat_id_2 + "`=";
+            }
+
+            if (vat_id_3 != "")
+            {
+                vat_id_3 = "\"" + vat_id_3 + "\"";
+                vat_id_3_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_vat_id_3 + "`=";
+            }
+
+            if (address_street != "")
+            {
+                address_street = "\"" + address_street + "\"";
+                address_street_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_address_street + "`=";
+            }
+            if (number != "")
+            {
+                number = "\"" + number + "\"";
+                number_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_address_number + "`=";
+            }
+
+
+            if (city != "")
+            {
+                city = "\"" + city + "\"";
+                city_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_address_city + "`=";
+            }
+
+
+            if (region != "")
+            {
+                region = "\"" + region + "\"";
+                region_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_address_region + "`=";
+            }
+
+
+            if (phone != "")
+            {
+                phone = "\"" + phone + "\"";
+                phone_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_phone + "`=";
+            }
+
+
+            if (mail != "")
+            {
+                mail = "\"" + mail + "\"";
+                mail_col =
+                 ",`"
+                + Properties.Settings.Default.col_customer_mail_address + "`=";
+            }
+
+
+
+            string query =
+                "UPDATE `" + Properties.Settings.Default.customers_table_name
+                + "` SET `"
+                + Properties.Settings.Default.col_customer_name
+                + "`="
+                + '\"'
+                + textbox_name.Text
+                + '\"'
+                + surname_col
+                + surname
+                + type_col
+                + type
+                + business_name_col
+                + business_name
+                + vat_id_1_col
+                + vat_id_1
+                + vat_id_2_col
+                + vat_id_2
+                + vat_id_3_col
+                + vat_id_3
+                + address_street_col
+                + address_street
+                + number_col
+                + number
+                + city_col
+                + city
+                + region_col
+                + region
+                + phone_col
+                + phone
+                + mail_col
+                + mail
+                 + " WHERE `"
+                 + Properties.Settings.Default.col_customers_customer_id
+                 + "`="
+                 + customer_index.ToString();
+            Debug.WriteLine(query);
             var reader = new MySqlCommand(query, dBConnection.Connection).ExecuteReader();
             reader.Close();
         }

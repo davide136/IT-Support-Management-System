@@ -28,19 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_filter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_open = new System.Windows.Forms.Button();
+            this.button_delete = new System.Windows.Forms.Button();
+            this.button_update = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.repairs_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_date_end = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_device = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_obj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBox_filter
             // 
-            this.textBox1.Location = new System.Drawing.Point(174, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(981, 31);
-            this.textBox1.TabIndex = 0;
+            this.textBox_filter.Location = new System.Drawing.Point(174, 57);
+            this.textBox_filter.Name = "textBox_filter";
+            this.textBox_filter.Size = new System.Drawing.Size(981, 31);
+            this.textBox_filter.TabIndex = 0;
             // 
             // label1
             // 
@@ -51,47 +65,170 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Filtra:";
             // 
-            // button1
+            // button_open
             // 
-            this.button1.Location = new System.Drawing.Point(53, 627);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(254, 72);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Apri";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_open.Location = new System.Drawing.Point(53, 627);
+            this.button_open.Name = "button_open";
+            this.button_open.Size = new System.Drawing.Size(254, 72);
+            this.button_open.TabIndex = 2;
+            this.button_open.Text = "Apri";
+            this.button_open.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // button_delete
             // 
-            this.button2.Location = new System.Drawing.Point(339, 627);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(254, 72);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Rimuovi";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_delete.Location = new System.Drawing.Point(339, 627);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(254, 72);
+            this.button_delete.TabIndex = 3;
+            this.button_delete.Text = "Rimuovi";
+            this.button_delete.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button_update
             // 
-            this.button3.Location = new System.Drawing.Point(901, 627);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(254, 72);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Aggiorna";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button2_Click);
+            this.button_update.Location = new System.Drawing.Point(901, 627);
+            this.button_update.Name = "button_update";
+            this.button_update.Size = new System.Drawing.Size(254, 72);
+            this.button_update.TabIndex = 4;
+            this.button_update.Text = "Aggiorna";
+            this.button_update.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Rep. ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Date Start";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Date End";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Device Model";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Objective";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // repairs_id
+            // 
+            this.repairs_id.HeaderText = "Rep. ID";
+            this.repairs_id.MinimumWidth = 8;
+            this.repairs_id.Name = "repairs_id";
+            this.repairs_id.ReadOnly = true;
+            this.repairs_id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // col_name
+            // 
+            this.col_name.HeaderText = "Name";
+            this.col_name.MinimumWidth = 8;
+            this.col_name.Name = "col_name";
+            this.col_name.ReadOnly = true;
+            this.col_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // col_date
+            // 
+            this.col_date.HeaderText = "Date Start";
+            this.col_date.MinimumWidth = 8;
+            this.col_date.Name = "col_date";
+            this.col_date.ReadOnly = true;
+            this.col_date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // col_date_end
+            // 
+            this.col_date_end.HeaderText = "Date End";
+            this.col_date_end.MinimumWidth = 8;
+            this.col_date_end.Name = "col_date_end";
+            this.col_date_end.ReadOnly = true;
+            this.col_date_end.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // col_device
+            // 
+            this.col_device.HeaderText = "Device Model";
+            this.col_device.MinimumWidth = 8;
+            this.col_device.Name = "col_device";
+            this.col_device.ReadOnly = true;
+            this.col_device.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // col_obj
+            // 
+            this.col_obj.HeaderText = "Objective";
+            this.col_obj.MinimumWidth = 8;
+            this.col_obj.Name = "col_obj";
+            this.col_obj.ReadOnly = true;
             // 
             // RepairsArchive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1216, 826);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.repairs_id,
+            this.col_name,
+            this.col_date,
+            this.col_date_end,
+            this.col_device,
+            this.col_obj});
+            this.dataGridView1.Location = new System.Drawing.Point(53, 151);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1102, 410);
+            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.Text = "dataGridView1";
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button_update);
+            this.Controls.Add(this.button_delete);
+            this.Controls.Add(this.button_open);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_filter);
             this.Name = "RepairsArchive";
             this.Text = "RepairsArchive";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,10 +236,23 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_filter;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_open;
+        private System.Windows.Forms.Button button_delete;
+        private System.Windows.Forms.Button button_update;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn repairs_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_date_end;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_device;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_obj;
     }
 }

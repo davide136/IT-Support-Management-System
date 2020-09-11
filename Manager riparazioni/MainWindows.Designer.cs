@@ -49,8 +49,8 @@ namespace Manager_riparazioni
             this.col_date_end = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_device = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_obj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.checkbox_hide_finnished = new System.Windows.Forms.CheckBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -181,7 +181,6 @@ namespace Manager_riparazioni
             this.repair_id.Name = "repair_id";
             this.repair_id.ReadOnly = true;
             this.repair_id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.repair_id.Width = 150;
             // 
             // col_name
             // 
@@ -228,10 +227,23 @@ namespace Manager_riparazioni
             this.col_obj.ReadOnly = true;
             this.col_obj.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // checkbox_hide_finnished
+            // 
+            this.checkbox_hide_finnished.AutoSize = true;
+            this.checkbox_hide_finnished.Enabled = false;
+            this.checkbox_hide_finnished.Location = new System.Drawing.Point(60, 628);
+            this.checkbox_hide_finnished.Name = "checkbox_hide_finnished";
+            this.checkbox_hide_finnished.Size = new System.Drawing.Size(142, 29);
+            this.checkbox_hide_finnished.TabIndex = 1;
+            this.checkbox_hide_finnished.Text = "Hide finished";
+            this.checkbox_hide_finnished.UseVisualStyleBackColor = true;
+            this.checkbox_hide_finnished.CheckedChanged += new System.EventHandler(this.checkbox_hide_finnished_CheckedChanged);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.repair_id,
@@ -249,18 +261,6 @@ namespace Manager_riparazioni
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.Text = "dataGridView1";
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // checkbox_hide_finnished
-            // 
-            this.checkbox_hide_finnished.AutoSize = true;
-            this.checkbox_hide_finnished.Enabled = false;
-            this.checkbox_hide_finnished.Location = new System.Drawing.Point(60, 628);
-            this.checkbox_hide_finnished.Name = "checkbox_hide_finnished";
-            this.checkbox_hide_finnished.Size = new System.Drawing.Size(142, 29);
-            this.checkbox_hide_finnished.TabIndex = 1;
-            this.checkbox_hide_finnished.Text = "Hide finished";
-            this.checkbox_hide_finnished.UseVisualStyleBackColor = true;
-            this.checkbox_hide_finnished.CheckedChanged += new System.EventHandler(this.checkbox_hide_finnished_CheckedChanged);
             // 
             // MainWindows
             // 
