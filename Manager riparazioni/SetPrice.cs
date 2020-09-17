@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -29,12 +24,13 @@ namespace Manager_riparazioni
 
         private void textBox_price_input_TextChanged(object sender, EventArgs e)
         {
-            button_save_and_exit.Enabled = !(textBox_price_input.Text.Length==0);
-            try {
+            button_save_and_exit.Enabled = !(textBox_price_input.Text.Length == 0);
+            try
+            {
                 int temp = int.Parse(textBox_price_input.Text);
                 Textbox_price = textBox_price_input;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
                 button_save_and_exit.Enabled = false;

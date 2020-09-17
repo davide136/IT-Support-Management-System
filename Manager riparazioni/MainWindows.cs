@@ -1,13 +1,9 @@
 ﻿using Manager_riparazioni.Util;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -15,6 +11,7 @@ namespace Manager_riparazioni
     public partial class MainWindows : Form
     {
         Boolean isConnect = false;
+        private string customer_id;
         readonly DBConnection dbConnection = DBConnection.Instance();
 
         public MainWindows()
@@ -23,7 +20,7 @@ namespace Manager_riparazioni
             label_uri.Text = Properties.Settings.Default.URI_Database;
             UpdateUI();
             if (Properties.Settings.Default.autostart)
-                Connect_Click(null,null);
+                Connect_Click(null, null);
         }
 
         private void UpdateUI()
@@ -116,45 +113,50 @@ namespace Manager_riparazioni
 
             string query = "" +
                 "select " +
-                // REPAIR ID
+                // REPAIR ID  0
                 Properties.Settings.Default.repairs_table_name +
                 "." +
                 Properties.Settings.Default.col_repairs_id_repair +
                 ", " +
-                //NAME
+                //NAME  1
                 Properties.Settings.Default.customers_table_name +
                 "." +
                 Properties.Settings.Default.col_customer_name +
                 ", " +
-                //SURNNAME
+                //SURNNAME  2
                 Properties.Settings.Default.customers_table_name +
                 "." +
                 Properties.Settings.Default.col_customer_surname +
                 ", " +
-                //BUSINESS NAME
+                //BUSINESS NAME  3
                 Properties.Settings.Default.customers_table_name +
                 "." +
                 Properties.Settings.Default.col_customer_business_name +
                 ", " +
-                //START
+                //START  4
                 Properties.Settings.Default.repairs_table_name +
                 "." +
                 Properties.Settings.Default.col_repairs_date_start +
                 ", " +
-                //END
+                //END  5
                 Properties.Settings.Default.repairs_table_name +
                 "." +
                 Properties.Settings.Default.col_repairs_date_end +
                 ", " +
-                //DEVICE MODEL
+                //DEVICE MODEL  6
                 Properties.Settings.Default.repairs_table_name +
                 "." +
                 Properties.Settings.Default.col_repairs_device_model +
                 ", " +
-                //OBJECTIVE
+                //OBJECTIVE  7
                 Properties.Settings.Default.repairs_table_name +
                 "." +
                 Properties.Settings.Default.col_repairs_objective +
+                ", " +
+                //CUSTOMER ID  8
+                Properties.Settings.Default.repairs_table_name +
+                "." +
+                Properties.Settings.Default.col_repairs_id_customer +
                 " from " +
                 //TABLE NAME
                 Properties.Settings.Default.customers_table_name +
@@ -171,32 +173,36 @@ namespace Manager_riparazioni
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                String repair_id = reader.GetString(0);
-                String name = "";
-                String s1 = "", s2 = "", s3 = "";
+                string repair_id = reader.GetString(0);
+                string name = "";
+                string s1 = "", s2 = "", s3 = "";
                 if (!reader.IsDBNull(1))
                     s1 = reader.GetString(1);
                 if (!reader.IsDBNull(2))
                     s2 = reader.GetString(2);
                 if (!reader.IsDBNull(3))
                     s3 = reader.GetString(3);
-                name = GetName(s1,s2,s3);
+                name = GetName(s1, s2, s3);
 
-                String date_start = "";
+                string date_start = "";
                 if (!reader.IsDBNull(4))
                     date_start = reader.GetString(4);
 
-                String date_end = "";
+                string date_end = "";
                 if (!reader.IsDBNull(5))
                     date_end = reader.GetString(5);
 
-                String device_model = "";
+                string device_model = "";
                 if (!reader.IsDBNull(6))
                     device_model = reader.GetString(6);
 
-                String objective = "";
+                string objective = "";
                 if (!reader.IsDBNull(7))
                     objective = reader.GetString(7);
+
+                customer_id = "";
+                if (!reader.IsDBNull(8))
+                    customer_id = reader.GetString(8);
 
 
                 dataGridView1.Rows.Add(
@@ -211,17 +217,21 @@ namespace Manager_riparazioni
             reader.Close();
             dataGridView1.AutoResizeColumns();
             dataGridView1.AutoResizeColumnHeadersHeight();
+            dataGridView1.Sort(dataGridView1.Columns[2], ListSortDirection.Ascending);
+
+            checkbox_hide_finnished.Checked = true;
+            checkbox_hide_finnished_CheckedChanged(null, null);
         }
 
         private string GetName(string name, string surname, string business)
         {
-            String result = "";
+            string result = "";
             //has name or surname but no business name
             if (business == "" && (name != "" || surname != ""))
                 result = surname + " " + name;
             //has name or surname and business name
             else if (business != "" && (name != "" || surname != ""))
-                result = business +" Ref. " + name + " " +surname;
+                result = business + " Ref. " + name + " " + surname;
             //only has business name
             else if (business != "" && name == "" && surname == "")
                 result = business;
@@ -232,7 +242,7 @@ namespace Manager_riparazioni
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Object repair_index = dataGridView1.CurrentRow.Cells[0].Value;
-            Repair repair = new Repair(null,repair_index);
+            Repair repair = new Repair(customer_id, repair_index);
             repair.Show();
         }
 

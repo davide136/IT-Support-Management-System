@@ -1,12 +1,7 @@
 ﻿using Manager_riparazioni.Util;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -20,7 +15,7 @@ namespace Manager_riparazioni
         {
             InitializeComponent();
             button_save_and_exit.Enabled = false;
-                
+
         }
 
         private void LoadData()
@@ -123,7 +118,7 @@ namespace Manager_riparazioni
 
         private void Save_and_exit_Click(object sender, EventArgs e)
         {
-            
+
             if (dBConnection.IsConnect())
             {
                 if (customer_index == null)
@@ -131,7 +126,7 @@ namespace Manager_riparazioni
                 else
                     updateUser();
             }
-                                 
+
             this.Close();
         }
 
@@ -475,7 +470,7 @@ namespace Manager_riparazioni
 
         private void textbox_name_TextChanged(object sender, EventArgs e)
         {
-            button_save_and_exit.Enabled = !(textbox_name.Text.Length==0);
+            button_save_and_exit.Enabled = !(textbox_name.Text.Length == 0);
         }
     }
 }

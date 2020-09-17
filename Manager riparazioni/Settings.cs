@@ -1,12 +1,6 @@
 ﻿using Manager_riparazioni.Util;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -51,9 +45,11 @@ namespace Manager_riparazioni
             //Test Connection
             var dbCon = DBConnection.Instance();
             Boolean isConnect = false;
-            try {
+            try
+            {
                 isConnect = dbCon.IsConnect();
-            } catch (Exception error)
+            }
+            catch (Exception error)
             {
                 EventLog.Exists("", error.Message);
             }

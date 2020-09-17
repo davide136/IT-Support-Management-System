@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MySql.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace Manager_riparazioni.Util
 {
@@ -31,14 +28,14 @@ namespace Manager_riparazioni.Util
         public bool IsConnect()
         {
             if (Connection == null)
-            {                
+            {
                 String db_name = Properties.Settings.Default.DB_Name;
                 if (String.IsNullOrEmpty(db_name))
                     return false;
                 String uri = Properties.Settings.Default.URI_Database;
                 String username = Properties.Settings.Default.Username;
                 String password = Properties.Settings.Default.Password;
-                string connstring = string.Format("Server="+uri+"; database={0}; UID=" + username + "; password= " + password, db_name);
+                string connstring = string.Format("Server=" + uri + "; database={0}; UID=" + username + "; password= " + password, db_name);
                 connection = new MySqlConnection(connstring);
                 connection.Open();
             }

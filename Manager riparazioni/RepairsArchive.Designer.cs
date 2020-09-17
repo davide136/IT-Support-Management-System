@@ -55,6 +55,7 @@
             this.textBox_filter.Name = "textBox_filter";
             this.textBox_filter.Size = new System.Drawing.Size(981, 31);
             this.textBox_filter.TabIndex = 0;
+            this.textBox_filter.TextChanged += new System.EventHandler(this.textBox_filter_TextChanged);
             // 
             // label1
             // 
@@ -193,12 +194,6 @@
             this.col_obj.Name = "col_obj";
             this.col_obj.ReadOnly = true;
             // 
-            // RepairsArchive
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1216, 826);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -220,6 +215,13 @@
             this.dataGridView1.Size = new System.Drawing.Size(1102, 410);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.Text = "dataGridView1";
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Row_DoubleClick);
+            // 
+            // RepairsArchive
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1216, 826);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_update);
             this.Controls.Add(this.button_delete);

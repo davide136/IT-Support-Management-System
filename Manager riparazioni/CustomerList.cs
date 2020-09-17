@@ -1,11 +1,6 @@
 ﻿using Manager_riparazioni.Util;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -38,7 +33,7 @@ namespace Manager_riparazioni
             while (reader.Read())
             {
                 int index = reader.GetInt32(0);
-                
+
                 String name = "";
                 if (!reader.IsDBNull(1))
                     name = reader.GetString(1);
@@ -101,7 +96,7 @@ namespace Manager_riparazioni
         private void New_Repair_Click(object sender, EventArgs e)
         {
             Object customer_id = dataGridView1.CurrentRow.Cells[0].Value;
-            Repair newRepair = new Repair(customer_id,null);
+            Repair newRepair = new Repair(customer_id, null);
             newRepair.Show();
         }
         private void RowsSelectionChanged(object sender, EventArgs e)
@@ -137,9 +132,9 @@ namespace Manager_riparazioni
         private void QueryDeleteUserAndRepairs(object customer_index)
         {
             //isConnect is true
-            string query = 
+            string query =
                 "delete from " +
-                Properties.Settings.Default.customers_table_name 
+                Properties.Settings.Default.customers_table_name
                 + " where " +
                 Properties.Settings.Default.col_customers_customer_id
                 + " = " + customer_index.ToString();

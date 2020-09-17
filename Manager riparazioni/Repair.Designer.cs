@@ -47,6 +47,8 @@
             this.label_load_date = new System.Windows.Forms.Label();
             this.label_end_date = new System.Windows.Forms.Label();
             this.label_price = new System.Windows.Forms.Label();
+            this.button_print = new System.Windows.Forms.Button();
+            this.linkLabel_customer_name = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // button_save_and_exit
@@ -126,13 +128,12 @@
             // 
             // linklabel_repair_id
             // 
-            this.linklabel_repair_id.AutoSize = true;
-            this.linklabel_repair_id.Location = new System.Drawing.Point(932, 82);
+            this.linklabel_repair_id.Location = new System.Drawing.Point(952, 82);
             this.linklabel_repair_id.Name = "linklabel_repair_id";
-            this.linklabel_repair_id.Size = new System.Drawing.Size(154, 25);
+            this.linklabel_repair_id.Size = new System.Drawing.Size(134, 25);
             this.linklabel_repair_id.TabIndex = 5;
             this.linklabel_repair_id.TabStop = true;
-            this.linklabel_repair_id.Text = "Ticket Riparazione";
+            this.linklabel_repair_id.Text = "#";
             this.linklabel_repair_id.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label4
@@ -200,33 +201,49 @@
             // 
             // label_load_date
             // 
-            this.label_load_date.AutoSize = true;
-            this.label_load_date.Location = new System.Drawing.Point(389, 722);
+            this.label_load_date.Location = new System.Drawing.Point(255, 722);
             this.label_load_date.Name = "label_load_date";
-            this.label_load_date.Size = new System.Drawing.Size(128, 25);
+            this.label_load_date.Size = new System.Drawing.Size(270, 25);
             this.label_load_date.TabIndex = 8;
-            this.label_load_date.Text = "NON INIZIATO";
-            this.label_load_date.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label_load_date.Text = "dd/MM/yyyy hh:mm:ss";
             // 
             // label_end_date
             // 
-            this.label_end_date.AutoSize = true;
-            this.label_end_date.Location = new System.Drawing.Point(364, 759);
+            this.label_end_date.Location = new System.Drawing.Point(255, 759);
             this.label_end_date.Name = "label_end_date";
-            this.label_end_date.Size = new System.Drawing.Size(153, 25);
+            this.label_end_date.Size = new System.Drawing.Size(270, 25);
             this.label_end_date.TabIndex = 8;
-            this.label_end_date.Text = "NON TERMINATO";
-            this.label_end_date.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label_end_date.Text = "dd/MM/yyyy hh:mm:ss";
             // 
             // label_price
             // 
-            this.label_price.AutoSize = true;
-            this.label_price.Location = new System.Drawing.Point(295, 657);
+            this.label_price.Location = new System.Drawing.Point(255, 657);
             this.label_price.Name = "label_price";
-            this.label_price.Size = new System.Drawing.Size(218, 25);
+            this.label_price.Size = new System.Drawing.Size(200, 25);
             this.label_price.TabIndex = 8;
-            this.label_price.Text = "COSTO NON ASSEGNATO";
-            this.label_price.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_price.Text = "#";
+            // 
+            // button_print
+            // 
+            this.button_print.Location = new System.Drawing.Point(911, 122);
+            this.button_print.Name = "button_print";
+            this.button_print.Size = new System.Drawing.Size(175, 59);
+            this.button_print.TabIndex = 4;
+            this.button_print.Text = "Stampa";
+            this.button_print.UseVisualStyleBackColor = true;
+            this.button_print.Click += new System.EventHandler(this.Print_Click);
+            // 
+            // linkLabel_customer_name
+            // 
+            this.linkLabel_customer_name.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.linkLabel_customer_name.Location = new System.Drawing.Point(594, 45);
+            this.linkLabel_customer_name.Name = "linkLabel_customer_name";
+            this.linkLabel_customer_name.Size = new System.Drawing.Size(492, 25);
+            this.linkLabel_customer_name.TabIndex = 5;
+            this.linkLabel_customer_name.TabStop = true;
+            this.linkLabel_customer_name.Text = "Nome Cliente";
+            this.linkLabel_customer_name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.linkLabel_customer_name.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_customer_name_LinkClicked);
             // 
             // Repair
             // 
@@ -239,6 +256,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.linkLabel_customer_name);
             this.Controls.Add(this.linklabel_repair_id);
             this.Controls.Add(this.textbox_notes);
             this.Controls.Add(this.richTextBox_objective);
@@ -251,6 +269,7 @@
             this.Controls.Add(this.button_open_repair);
             this.Controls.Add(this.button_end_repair);
             this.Controls.Add(this.button_cancel);
+            this.Controls.Add(this.button_print);
             this.Controls.Add(this.button_save_and_exit);
             this.Name = "Repair";
             this.Text = "Riparazione";
@@ -280,5 +299,7 @@
         private System.Windows.Forms.Label label_load_date;
         private System.Windows.Forms.Label label_end_date;
         private System.Windows.Forms.Label label_price;
+        private System.Windows.Forms.Button button_print;
+        private System.Windows.Forms.LinkLabel linkLabel_customer_name;
     }
 }
