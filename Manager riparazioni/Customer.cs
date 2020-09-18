@@ -20,12 +20,8 @@ namespace Manager_riparazioni
 
         private void LoadData()
         {
-            string query = "" +
-                "select * from " +
-                Properties.Settings.Default.customers_table_name +
-                " where " +
-                Properties.Settings.Default.col_customers_customer_id +
-                " = " +
+            string query = 
+                Properties.Settings.Default.query_select_customer_with_id +
                 customer_index.ToString();
 
             Debug.WriteLine("Load query: " + query);
@@ -101,6 +97,7 @@ namespace Manager_riparazioni
                 textBox_address_route.Text = address_street;
                 textBox_address_number.Text = address_number;
                 textBox_address_city.Text = address_city;
+                textBox_address_region.Text = address_region;
                 textBox_phone.Text = phone;
                 textBox_mail_address.Text = mail_address;
 

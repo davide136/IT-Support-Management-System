@@ -12,11 +12,21 @@ namespace Manager_riparazioni
     {
         readonly DBConnection dbConnection = DBConnection.Instance();
         private ArrayList customer_id;
+        DataTable dataTable = new DataTable();
+
 
         public RepairsArchive()
         {
             InitializeComponent();
             customer_id = new ArrayList();
+
+            dataTable.Columns.Add("Rep. ID", typeof(string));
+            dataTable.Columns.Add("Name", typeof(string));
+            dataTable.Columns.Add("Date Start", typeof(string));
+            dataTable.Columns.Add("Date End", typeof(string));
+            dataTable.Columns.Add("Device", typeof(string));
+            dataTable.Columns.Add("Objective", typeof(string));
+
             UpdateUI();
         }
 
@@ -24,69 +34,8 @@ namespace Manager_riparazioni
         {
             //isConnect is true
 
-            string query = "" +
-                "select " +
-                // REPAIR ID  0
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_id_repair +
-                ", " +
-                //NAME  1
-                Properties.Settings.Default.customers_table_name +
-                "." +
-                Properties.Settings.Default.col_customer_name +
-                ", " +
-                //SURNNAME  2
-                Properties.Settings.Default.customers_table_name +
-                "." +
-                Properties.Settings.Default.col_customer_surname +
-                ", " +
-                //BUSINESS NAME  3
-                Properties.Settings.Default.customers_table_name +
-                "." +
-                Properties.Settings.Default.col_customer_business_name +
-                ", " +
-                //START  4
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_date_start +
-                ", " +
-                //END  5
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_date_end +
-                ", " +
-                //DEVICE MODEL 6
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_device_model +
-                ", " +
-                //OBJECTIVE  7
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_objective +
-                ", " +
-                //CUSTOMER ID  8
-                Properties.Settings.Default.repairs_table_name +
-                "." +
-                Properties.Settings.Default.col_repairs_id_customer +
-                " from " +
-                //TABLE NAME
-                Properties.Settings.Default.customers_table_name +
-                ", " +
-                Properties.Settings.Default.repairs_table_name + 
-                " WHERE " +
-                Properties.Settings.Default.customers_table_name + "." +
-                Properties.Settings.Default.col_customers_customer_id + " = " +
-
-                Properties.Settings.Default.repairs_table_name + "." +
-                Properties.Settings.Default.col_repairs_id_customer 
-                ;
-
-
-            Debug.WriteLine(query);
+            string query = Properties.Settings.Default.query_load_repairs_list;
             var cmd = new MySqlCommand(query, dbConnection.Connection);
-
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -119,7 +68,7 @@ namespace Manager_riparazioni
                 if (!reader.IsDBNull(8))
                     customer_id.Add( reader.GetString(8) );
 
-                dataGridView1.Rows.Add(
+                dataTable.Rows.Add(
                     repair_id,
                     name,
                     date_start,
@@ -128,10 +77,12 @@ namespace Manager_riparazioni
                     objective
                     );
             }
+
+            dataGridView1.DataSource = dataTable;
+
             reader.Close();
             dataGridView1.AutoResizeColumns();
             dataGridView1.AutoResizeColumnHeadersHeight();
-            dataGridView1.Sort(dataGridView1.Columns[2], System.ComponentModel.ListSortDirection.Ascending);
         }
 
         private string GetName(string name, string surname, string business)
@@ -167,22 +118,16 @@ namespace Manager_riparazioni
 
         private void EmptyList()
         {
-            dataGridView1.Rows.Clear();
+            dataTable.Clear();
         }
 
         private void textBox_filter_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format(
-                col_date_end + " like '{0}%' OR "
-                + col_date + " like '{0}%' OR "
-                + col_device + " like '{0}%' OR "
-                + col_obj + " like '{0}%' OR "
-                + col_name + " like '{0}%'",
+            dataTable.DefaultView.RowFilter = string.Format(
+                "Name LIKE '%{0}%' OR " +
+                "Device LIKE '%{0}%' OR " +
+                "'Rep. ID' LIKE '%{0}%'", 
                 textBox_filter.Text);
-            }
-            catch (Exception error) { Debug.WriteLine(error.Message); };
         }
 
         private void RepairsFormClosing(object sender, FormClosingEventArgs e)
@@ -201,22 +146,13 @@ namespace Manager_riparazioni
 
         private void button_delete_Click(object sender, EventArgs e)
         {
-            _ = dataGridView1.CurrentRow.Cells[0].Value;
-            QueryDeleteRepair( (string) customer_id[dataGridView1.CurrentRow.Index]);
+            QueryDeleteRepair(dataGridView1.CurrentRow.Cells[0].Value + "");
             dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
         }
 
-        private void QueryDeleteRepair(string index)
+        private void QueryDeleteRepair(string repair_id)
         {
-            //isConnect is true
-            string query =
-                "delete from " +
-                Properties.Settings.Default.repairs_table_name
-                + " where " +
-                Properties.Settings.Default.col_repairs_id_repair
-                + " = " + index;
-
-            Debug.WriteLine("1ST DEL QUERY:    " + query);
+            string query = Properties.Settings.Default.query_repair_delete + repair_id;
             var cmd = new MySqlCommand(query, dbConnection.Connection);
             var reader = cmd.ExecuteReader();
             reader.Close();

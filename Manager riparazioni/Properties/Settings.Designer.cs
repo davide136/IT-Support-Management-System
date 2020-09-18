@@ -325,18 +325,6 @@ namespace Manager_riparazioni.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("is_sold_from_me")]
-        public string col_repairs_is_sold_from_me {
-            get {
-                return ((string)(this["col_repairs_is_sold_from_me"]));
-            }
-            set {
-                this["col_repairs_is_sold_from_me"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("date_start")]
         public string col_repairs_date_start {
             get {
@@ -373,18 +361,6 @@ namespace Manager_riparazioni.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("id_customers")]
-        public string col_customers_customer_id {
-            get {
-                return ((string)(this["col_customers_customer_id"]));
-            }
-            set {
-                this["col_customers_customer_id"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("id_repair")]
         public string col_repairs_id_repair {
             get {
@@ -404,6 +380,90 @@ namespace Manager_riparazioni.Properties {
             }
             set {
                 this["autostart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("delete from repairslist where id_repair = ")]
+        public string query_repair_delete {
+            get {
+                return ((string)(this["query_repair_delete"]));
+            }
+            set {
+                this["query_repair_delete"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"select repairslist.id_repair, customers.name, customers.surname, customers.business_name, repairslist.date_start, repairslist.date_end, repairslist.device_model, repairslist.objective, repairslist.id_customer from customers, repairslist WHERE customers.id_customers = repairslist.id_customer")]
+        public string query_load_repairs_list {
+            get {
+                return ((string)(this["query_load_repairs_list"]));
+            }
+            set {
+                this["query_load_repairs_list"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("delete from repairslist where id_customer = ")]
+        public string query_delete_user_repairs {
+            get {
+                return ((string)(this["query_delete_user_repairs"]));
+            }
+            set {
+                this["query_delete_user_repairs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("delete from customers where id_customers = ")]
+        public string query_delete_user {
+            get {
+                return ((string)(this["query_delete_user"]));
+            }
+            set {
+                this["query_delete_user"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("select * from customers")]
+        public string query_select_all_customers {
+            get {
+                return ((string)(this["query_select_all_customers"]));
+            }
+            set {
+                this["query_select_all_customers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("id_customers")]
+        public string col_customers_customer_id {
+            get {
+                return ((string)(this["col_customers_customer_id"]));
+            }
+            set {
+                this["col_customers_customer_id"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("select * from customers where id_customers = ")]
+        public string query_select_customer_with_id {
+            get {
+                return ((string)(this["query_select_customer_with_id"]));
+            }
+            set {
+                this["query_select_customer_with_id"] = value;
             }
         }
     }

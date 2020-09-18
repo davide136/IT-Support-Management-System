@@ -77,9 +77,6 @@
     <Setting Name="col_repairs_price" Type="System.String" Scope="User">
       <Value Profile="(Default)">price</Value>
     </Setting>
-    <Setting Name="col_repairs_is_sold_from_me" Type="System.String" Scope="User">
-      <Value Profile="(Default)">is_sold_from_me</Value>
-    </Setting>
     <Setting Name="col_repairs_date_start" Type="System.String" Scope="User">
       <Value Profile="(Default)">date_start</Value>
     </Setting>
@@ -89,14 +86,32 @@
     <Setting Name="col_repairs_id_customer" Type="System.String" Scope="User">
       <Value Profile="(Default)">id_customer</Value>
     </Setting>
-    <Setting Name="col_customers_customer_id" Type="System.String" Scope="User">
-      <Value Profile="(Default)">id_customers</Value>
-    </Setting>
     <Setting Name="col_repairs_id_repair" Type="System.String" Scope="User">
       <Value Profile="(Default)">id_repair</Value>
     </Setting>
     <Setting Name="autostart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="query_repair_delete" Type="System.String" Scope="User">
+      <Value Profile="(Default)">delete from repairslist where id_repair = </Value>
+    </Setting>
+    <Setting Name="query_load_repairs_list" Type="System.String" Scope="User">
+      <Value Profile="(Default)">select repairslist.id_repair, customers.name, customers.surname, customers.business_name, repairslist.date_start, repairslist.date_end, repairslist.device_model, repairslist.objective, repairslist.id_customer from customers, repairslist WHERE customers.id_customers = repairslist.id_customer</Value>
+    </Setting>
+    <Setting Name="query_delete_user_repairs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">delete from repairslist where id_customer = </Value>
+    </Setting>
+    <Setting Name="query_delete_user" Type="System.String" Scope="User">
+      <Value Profile="(Default)">delete from customers where id_customers = </Value>
+    </Setting>
+    <Setting Name="query_select_all_customers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">select * from customers</Value>
+    </Setting>
+    <Setting Name="col_customers_customer_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">id_customers</Value>
+    </Setting>
+    <Setting Name="query_select_customer_with_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">select * from customers where id_customers = </Value>
     </Setting>
   </Settings>
 </SettingsFile>

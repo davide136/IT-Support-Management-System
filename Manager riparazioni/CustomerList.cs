@@ -36,9 +36,7 @@ namespace Manager_riparazioni
         private void LoadCustomerList()
         {
             //isConnect is true
-            string query = "" +
-                "select * from " +
-                Properties.Settings.Default.customers_table_name;
+            string query = Properties.Settings.Default.query_select_all_customers;
 
             var cmd = new MySqlCommand(query, dBConnection.Connection);
 
@@ -116,6 +114,7 @@ namespace Manager_riparazioni
             if (result == DialogResult.OK)
                 UpdateUI();
         }
+
         private void RowsSelectionChanged(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection selected_rows = dataGridView1.SelectedRows;
@@ -154,22 +153,16 @@ namespace Manager_riparazioni
         {
             //isConnect is true
             string query =
-                "delete from " +
-                Properties.Settings.Default.customers_table_name
-                + " where " +
-                Properties.Settings.Default.col_customers_customer_id
-                + " = " + customer_index.ToString();
+                 Properties.Settings.Default.query_delete_user_repairs + customer_index.ToString();
 
-            Debug.WriteLine("1ST DEL QUERY:    " + query);
+            Debug.WriteLine("FIRST QUERY:    " + query);
             var cmd = new MySqlCommand(query, dBConnection.Connection);
             var reader = cmd.ExecuteReader();
             reader.Close();
 
-            string query1 = "delete from " +
-                Properties.Settings.Default.repairs_table_name
-                + " where " + Properties.Settings.Default.col_repairs_id_customer + " = " + customer_index.ToString();
+            string query1 = Properties.Settings.Default.query_delete_user + customer_index.ToString();
 
-            Debug.WriteLine("1ST DEL QUERY:    " + query1);
+            Debug.WriteLine("SECOND QUERY:    " + query1);
             var cmd1 = new MySqlCommand(query1, dBConnection.Connection);
             var reader1 = cmd1.ExecuteReader();
             reader1.Close();

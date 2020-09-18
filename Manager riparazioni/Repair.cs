@@ -16,6 +16,11 @@ namespace Manager_riparazioni
         string price = "";
         string end_date = "";
         private bool existingRepair = false;
+        private string finalName;
+        private string device_model;
+        private string objective;
+        private string notes;
+        private string load_date;
 
         public Repair(Object customer_id, Object repair_id)
         {
@@ -103,20 +108,20 @@ namespace Manager_riparazioni
                 if (!reader.IsDBNull(0))
                     type = reader.GetString(0);
 
-                string device_model = "";
+                device_model = "";
                 if (!reader.IsDBNull(1))
                     device_model = reader.GetString(1);
 
-                string objective = "";
+                objective = "";
                 if (!reader.IsDBNull(2))
                     objective = reader.GetString(2);
 
 
-                string notes = "";
+                notes = "";
                 if (!reader.IsDBNull(3))
                     notes = reader.GetString(3);
 
-                string load_date = "";
+                load_date = "";
                 if (!reader.IsDBNull(4))
                     load_date = reader.GetString(4);
 
@@ -141,7 +146,7 @@ namespace Manager_riparazioni
                 string business = "";
                 if (!reader.IsDBNull(10))
                     business = reader.GetString(10);
-                string finalName = GetName(name, surname, business);
+                finalName = GetName(name, surname, business);
 
 
                 if (!reader.IsDBNull(11))
@@ -356,15 +361,37 @@ namespace Manager_riparazioni
         private void Print_Click(object sender, EventArgs e)
         {
 
-            string html = "<!DOCTYPE html>" +
-    "<html>" +
-    "<head><meta charset='UTF-8'><title>Title</title></head>" +
-    "<body>Body text...</body>" +
-    "</html>";
+            string html = "<html><head><style>" +
+                ".tbl{width: 100%;height: 100%;font-size: 300%;border: 2px dotted;}" +
+                "</style></head><body>" +
+                "<table class=\"tbl\"> <tbody> <tr> <td colspan=\"2\" width=\"100%\"> <p>" +
+                finalName +
+                "</p> </td> </tr> <tr> <td width=\"50%\"> <p>" +
+                "TELEFONO" +
+                "</p> </td> <td width=\"50%\" height=\"3%\"> <p>" +
+                load_date +
+                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"50%\" height=\"3%\"> <p>" +
+                device_model +
+                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
+                objective +
+                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
+                notes +
+                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
+                finalName +
+                "</p> </td> </tr> <tr> <td width=\"322\"> <p>" +
+                "TELEFONO" +
+                "</p> </td> <td width=\"322\"> <p>" +
+                load_date +
+                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
+                device_model +
+                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
+                objective +
+                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
+                notes +
+                "</p> </td> </tr> </tbody> </table></body></html>" ;
             var pdf = Pdf
                 .From(html)
                 .OfSize(PaperSize.A4)
-                .WithTitle("Title")
                 .WithoutOutline()
                 .WithMargins(1.25.Centimeters())
                 .Portrait()
@@ -372,8 +399,9 @@ namespace Manager_riparazioni
                 .Content();
 
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.FileName = "Client NAME.pdf";
+            dlg.FileName = finalName;
             dlg.Filter = "PDF Document|pdf";
+            dlg.AddExtension = true;
             DialogResult result = dlg.ShowDialog();
 
             if (result == DialogResult.OK)
