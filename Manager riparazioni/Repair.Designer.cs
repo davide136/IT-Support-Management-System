@@ -69,6 +69,7 @@
             this.button_cancel.TabIndex = 7;
             this.button_cancel.Text = "Annulla";
             this.button_cancel.UseVisualStyleBackColor = true;
+            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
             // label1
             // 
@@ -273,6 +274,7 @@
             this.Controls.Add(this.button_save_and_exit);
             this.Name = "Repair";
             this.Text = "Riparazione";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RepairClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

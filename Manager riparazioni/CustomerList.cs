@@ -1,6 +1,7 @@
 ﻿using Manager_riparazioni.Util;
 using MySql.Data.MySqlClient;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -18,6 +19,18 @@ namespace Manager_riparazioni
             button_new_repair.Enabled = false;
             button_edit_row.Enabled = false;
             button_delete_row.Enabled = false;
+        }
+
+
+        private void UpdateUI()
+        {
+            EmptyList();
+            LoadCustomerList();
+        }
+
+        private void EmptyList()
+        {
+            dataGridView1.Rows.Clear();
         }
 
         private void LoadCustomerList()
@@ -90,14 +103,18 @@ namespace Manager_riparazioni
         private void New_Customer_Click(object sender, EventArgs e)
         {
             Customer customer = new Customer();
-            customer.Show();
+            DialogResult result = customer.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
         }
 
         private void New_Repair_Click(object sender, EventArgs e)
         {
             Object customer_id = dataGridView1.CurrentRow.Cells[0].Value;
             Repair newRepair = new Repair(customer_id, null);
-            newRepair.Show();
+            DialogResult result = newRepair.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
         }
         private void RowsSelectionChanged(object sender, EventArgs e)
         {
@@ -112,14 +129,18 @@ namespace Manager_riparazioni
         {
             Object customer_index = dataGridView1.CurrentRow.Cells[0].Value;
             Customer customer = new Customer(customer_index);
-            customer.Show();
+            DialogResult result = customer.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
         }
 
         private void button_edit_row_Click(object sender, EventArgs e)
         {
             Object customer_index = dataGridView1.CurrentRow.Cells[0].Value;
             Customer customer = new Customer(customer_index);
-            customer.Show();
+            DialogResult result = customer.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
         }
 
         private void button_delete_row_Click(object sender, EventArgs e)
@@ -139,20 +160,24 @@ namespace Manager_riparazioni
                 Properties.Settings.Default.col_customers_customer_id
                 + " = " + customer_index.ToString();
 
+            Debug.WriteLine("1ST DEL QUERY:    " + query);
             var cmd = new MySqlCommand(query, dBConnection.Connection);
             var reader = cmd.ExecuteReader();
             reader.Close();
 
-            string query1 = "delete from repairslist where id_customer = 3" +
-               "delete from " +
-               Properties.Settings.Default.repairs_table_name
-               + " where " +
-               Properties.Settings.Default.col_customers_customer_id
-               + " = " + customer_index.ToString();
+            string query1 = "delete from " +
+                Properties.Settings.Default.repairs_table_name
+                + " where " + Properties.Settings.Default.col_repairs_id_customer + " = " + customer_index.ToString();
 
+            Debug.WriteLine("1ST DEL QUERY:    " + query1);
             var cmd1 = new MySqlCommand(query1, dBConnection.Connection);
-            var reader1 = cmd.ExecuteReader();
+            var reader1 = cmd1.ExecuteReader();
             reader1.Close();
+        }
+
+        private void CustomersListClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

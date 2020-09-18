@@ -1,6 +1,7 @@
 ﻿using Manager_riparazioni.Util;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Data;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -10,12 +11,13 @@ namespace Manager_riparazioni
     public partial class RepairsArchive : Form
     {
         readonly DBConnection dbConnection = DBConnection.Instance();
-        private string customer_id;
+        private ArrayList customer_id;
 
         public RepairsArchive()
         {
             InitializeComponent();
-            LoadList();
+            customer_id = new ArrayList();
+            UpdateUI();
         }
 
         private void LoadList()
@@ -89,7 +91,6 @@ namespace Manager_riparazioni
             while (reader.Read())
             {
                 String repair_id = reader.GetString(0);
-                String name = "";
                 String s1 = "", s2 = "", s3 = "";
                 if (!reader.IsDBNull(1))
                     s1 = reader.GetString(1);
@@ -97,7 +98,7 @@ namespace Manager_riparazioni
                     s2 = reader.GetString(2);
                 if (!reader.IsDBNull(3))
                     s3 = reader.GetString(3);
-                name = GetName(s1, s2, s3);
+                string name = GetName(s1, s2, s3);
 
                 String date_start = "";
                 if (!reader.IsDBNull(4))
@@ -115,8 +116,8 @@ namespace Manager_riparazioni
                 if (!reader.IsDBNull(7))
                     objective = reader.GetString(7);
 
-                if (!reader.IsDBNull(7))
-                    customer_id = reader.GetString(8);
+                if (!reader.IsDBNull(8))
+                    customer_id.Add( reader.GetString(8) );
 
                 dataGridView1.Rows.Add(
                     repair_id,
@@ -152,8 +153,21 @@ namespace Manager_riparazioni
         private void Row_DoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Object repair_index = dataGridView1.CurrentRow.Cells[0].Value;
-            Repair repair = new Repair(customer_id, repair_index);
-            repair.Show();
+            Repair customer = new Repair(customer_id[dataGridView1.CurrentRow.Index], repair_index);
+            DialogResult result = customer.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
+            EmptyList();
+            LoadList();
+        }
+
+        private void EmptyList()
+        {
+            dataGridView1.Rows.Clear();
         }
 
         private void textBox_filter_TextChanged(object sender, EventArgs e)
@@ -169,6 +183,43 @@ namespace Manager_riparazioni
                 textBox_filter.Text);
             }
             catch (Exception error) { Debug.WriteLine(error.Message); };
+        }
+
+        private void RepairsFormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void button_open_Click(object sender, EventArgs e)
+        {
+            Object repair_index = dataGridView1.CurrentRow.Cells[0].Value;
+            Repair customer = new Repair(customer_id[dataGridView1.CurrentRow.Index],repair_index);
+            DialogResult result = customer.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+            _ = dataGridView1.CurrentRow.Cells[0].Value;
+            QueryDeleteRepair( (string) customer_id[dataGridView1.CurrentRow.Index]);
+            dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+        }
+
+        private void QueryDeleteRepair(string index)
+        {
+            //isConnect is true
+            string query =
+                "delete from " +
+                Properties.Settings.Default.repairs_table_name
+                + " where " +
+                Properties.Settings.Default.col_repairs_id_repair
+                + " = " + index;
+
+            Debug.WriteLine("1ST DEL QUERY:    " + query);
+            var cmd = new MySqlCommand(query, dbConnection.Connection);
+            var reader = cmd.ExecuteReader();
+            reader.Close();
         }
     }
 }

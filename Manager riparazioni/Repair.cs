@@ -15,6 +15,7 @@ namespace Manager_riparazioni
         DBConnection dBConnection = DBConnection.Instance();
         string price = "";
         string end_date = "";
+        private bool existingRepair = false;
 
         public Repair(Object customer_id, Object repair_id)
         {
@@ -23,12 +24,14 @@ namespace Manager_riparazioni
             this.repair_id = repair_id;
             if (repair_id != null)
                 LoadData();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void LoadData()
         {
             string case_existing = "";
             if ((string)customer_id != "")
+            {
                 case_existing =
                  " AND " +
 
@@ -37,6 +40,9 @@ namespace Manager_riparazioni
                 " = " +
                 Properties.Settings.Default.repairs_table_name + "." +
                 Properties.Settings.Default.col_repairs_id_customer;
+                existingRepair = true;
+            }
+                
 
             string query = "" +
                 "select " +
@@ -174,9 +180,9 @@ namespace Manager_riparazioni
         {
             if (dBConnection.IsConnect())
             {
-                if (repair_id == null)
+                if (!existingRepair)
                     queryNewRepair();
-                if (customer_id == null)
+                else
                     queryUpdateRepair();
             }
             this.Close();
@@ -261,11 +267,9 @@ namespace Manager_riparazioni
         {
             String repair_type = comboBox_repairtype.SelectedIndex.ToString();
             String objective = richTextBox_objective.Text;
-            String device_model = textBox_device_model.Text;
             String notes = textbox_notes.Text;
 
             String repair_type_col = "";
-            String device_model_col = "";
             String objective_col = "";
             String notes_col = "";
 
@@ -389,6 +393,16 @@ namespace Manager_riparazioni
         {
             Customer customer = new Customer(customer_id);
             customer.Show();
+        }
+
+        private void button_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RepairClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

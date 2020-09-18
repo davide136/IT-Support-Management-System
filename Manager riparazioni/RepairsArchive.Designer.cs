@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_open = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
-            this.button_update = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +73,7 @@
             this.button_open.TabIndex = 2;
             this.button_open.Text = "Apri";
             this.button_open.UseVisualStyleBackColor = true;
+            this.button_open.Click += new System.EventHandler(this.button_open_Click);
             // 
             // button_delete
             // 
@@ -83,15 +83,7 @@
             this.button_delete.TabIndex = 3;
             this.button_delete.Text = "Rimuovi";
             this.button_delete.UseVisualStyleBackColor = true;
-            // 
-            // button_update
-            // 
-            this.button_update.Location = new System.Drawing.Point(901, 627);
-            this.button_update.Name = "button_update";
-            this.button_update.Size = new System.Drawing.Size(254, 72);
-            this.button_update.TabIndex = 4;
-            this.button_update.Text = "Aggiorna";
-            this.button_update.UseVisualStyleBackColor = true;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -223,13 +215,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1216, 826);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button_update);
             this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_open);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_filter);
             this.Name = "RepairsArchive";
             this.Text = "RepairsArchive";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RepairsFormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -242,7 +234,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_open;
         private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.Button button_update;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

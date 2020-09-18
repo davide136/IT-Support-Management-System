@@ -30,6 +30,9 @@ namespace Manager_riparazioni
                 button_connect.Text = "Disconnect";
                 label_status.Text = "CONNECTED";
                 label_status.ForeColor = Color.Green;
+
+                EmptyList();
+                LoadList();
             }
             else
             {
@@ -41,6 +44,7 @@ namespace Manager_riparazioni
             button_new_customer.Enabled = isConnect;
             button_repairs__archive.Enabled = isConnect;
             checkbox_hide_finnished.Enabled = isConnect;
+
         }
 
         private void MnuExit_Clicked(object sender, EventArgs e)
@@ -51,19 +55,25 @@ namespace Manager_riparazioni
         private void Customer_Click(object sender, EventArgs e)
         {
             Customer customer = new Customer();
-            customer.Show();
+            DialogResult result = customer.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
         }
 
         private void CustomerList_Click(object sender, EventArgs e)
         {
             CustomerList customerList = new CustomerList();
-            customerList.Show();
+            DialogResult result = customerList.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
         }
 
         private void RepairsArchive_Click(object sender, EventArgs e)
         {
             RepairsArchive repairsArchive = new RepairsArchive();
-            repairsArchive.Show();
+            DialogResult result = repairsArchive.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();
         }
 
         private void Tools_clicked(object sender, EventArgs e)
@@ -80,7 +90,6 @@ namespace Manager_riparazioni
                 {
                     dbConnection.Disconnect();
                     isConnect = false;
-                    EmptyList();
                     UpdateUI();
                 }
             }
@@ -94,11 +103,7 @@ namespace Manager_riparazioni
                 {
                     EventLog.Exists("", error.Message);
                 }
-                if (isConnect)
-                {
-                    LoadList();
-                    UpdateUI();
-                }
+                UpdateUI();
             }
         }
 
@@ -243,7 +248,9 @@ namespace Manager_riparazioni
         {
             Object repair_index = dataGridView1.CurrentRow.Cells[0].Value;
             Repair repair = new Repair(customer_id, repair_index);
-            repair.Show();
+            DialogResult result = repair.ShowDialog();
+            if (result == DialogResult.OK)
+                UpdateUI();            
         }
 
         private void checkbox_hide_finnished_CheckedChanged(object sender, EventArgs e)

@@ -472,5 +472,10 @@ namespace Manager_riparazioni
         {
             button_save_and_exit.Enabled = !(textbox_name.Text.Length == 0);
         }
+
+        private void CustomerClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

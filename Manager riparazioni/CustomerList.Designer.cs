@@ -172,6 +172,7 @@
             this.Controls.Add(this.button_new_customer);
             this.Name = "CustomerList";
             this.Text = "CustomerList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomersListClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
