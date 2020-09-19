@@ -1,6 +1,6 @@
 ﻿- IT Repair Manager -
 
-MySQL DB has to be already configured, table structre compatible with the committed settings cn be created automatically by using the following queries:
+MySQL DB has to be already configured, table structre compatible with the committed settings can be created automagically by using the following queries:
 
 CREATE TABLE `customers` (
   `id_customers` int NOT NULL AUTO_INCREMENT,
@@ -43,3 +43,5 @@ CREATE TABLE `repairslist` (
 
 
 Feel free to use and customize, don't resell without my written authorization.
+
+PS: Yes, i made some menus in IT and some in EN, i'm sorry, feel free to change them, i rushed them.
