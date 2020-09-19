@@ -21,6 +21,7 @@ namespace Manager_riparazioni
         private string objective;
         private string notes;
         private string load_date;
+        private string phone;
 
         public Repair(Object customer_id, Object repair_id)
         {
@@ -87,6 +88,9 @@ namespace Manager_riparazioni
                 ", " +
                 Properties.Settings.Default.repairs_table_name + "." +
                 Properties.Settings.Default.col_repairs_id_customer + //11
+                ", " +
+                Properties.Settings.Default.customers_table_name + "." +
+                Properties.Settings.Default.col_customer_phone + //12
 
                 " from " +
                 Properties.Settings.Default.repairs_table_name + "," + Properties.Settings.Default.customers_table_name +
@@ -147,10 +151,10 @@ namespace Manager_riparazioni
                 if (!reader.IsDBNull(10))
                     business = reader.GetString(10);
                 finalName = GetName(name, surname, business);
-
-
                 if (!reader.IsDBNull(11))
                     customer_id = reader.GetString(11);
+                if (!reader.IsDBNull(12))
+                    phone = reader.GetString(12);
 
                 comboBox_repairtype.SelectedIndex = int.Parse(type);
                 textBox_device_model.Text = device_model;
@@ -360,35 +364,29 @@ namespace Manager_riparazioni
 
         private void Print_Click(object sender, EventArgs e)
         {
+            string head = "<html><head><style>" +
+                ".tbl{width: 100%;height: 50%;font-size: 200%;border: 1px solid black;border-collapse:collapse;}" +
+                ".longtxt{font-size:80%;border: 1px solid black;border-collapse:collapse;vertical-align: top;}" +
+                ".shorttxt{height: 30px;border: 1px solid black;border-collapse:collapse;}" +
+                "</style></head><body><table>";
 
-            string html = "<html><head><style>" +
-                ".tbl{width: 100%;height: 100%;font-size: 300%;border: 2px dotted;}" +
-                "</style></head><body>" +
-                "<table class=\"tbl\"> <tbody> <tr> <td colspan=\"2\" width=\"100%\"> <p>" +
-                finalName +
-                "</p> </td> </tr> <tr> <td width=\"50%\"> <p>" +
-                "TELEFONO" +
-                "</p> </td> <td width=\"50%\" height=\"3%\"> <p>" +
-                load_date +
-                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"50%\" height=\"3%\"> <p>" +
-                device_model +
-                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
-                objective +
-                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
-                notes +
-                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
-                finalName +
-                "</p> </td> </tr> <tr> <td width=\"322\"> <p>" +
-                "TELEFONO" +
-                "</p> </td> <td width=\"322\"> <p>" +
-                load_date +
-                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
-                device_model +
-                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
-                objective +
-                "</p> </td> </tr> <tr> <td colspan=\"2\" width=\"644\"> <p>" +
-                notes +
-                "</p> </td> </tr> </tbody> </table></body></html>" ;
+            string shrtTxtStSpanned = "<tr class=\"shorttxt\"><td colspan=\"2\"><p>";
+            string shrtTxtSt = "<tr class=\"shorttxt\"><td><p>";
+            string longTxtStSpanned = "<tr class=\"longtxt\"><td colspan=\"2\"><p>";
+            string endRow = "</p></td></tr>";
+            string middleColumn = "</p></td><td><p>";
+            string endHtml = "</table></body></html>";
+
+            string body = "<table class=\"tbl\">" + shrtTxtStSpanned +
+                finalName + endRow + shrtTxtSt +
+                phone + middleColumn + 
+                load_date + endRow + shrtTxtStSpanned +
+                device_model + endRow + longTxtStSpanned +
+                objective + endRow + longTxtStSpanned + 
+                notes + endRow + "</table>" ;
+            string html = head + body + body + endHtml;
+
+            Debug.WriteLine(html );
             var pdf = Pdf
                 .From(html)
                 .OfSize(PaperSize.A4)
