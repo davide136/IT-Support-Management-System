@@ -364,6 +364,8 @@ namespace Manager_riparazioni
 
         private void Print_Click(object sender, EventArgs e)
         {
+            string path = Directory.GetCurrentDirectory() + "\\tmp.pdf" ;
+
             string head = "<html><head><style>" +
                 ".tbl{width: 100%;height: 50%;font-size: 200%;border: 1px solid black;border-collapse:collapse;}" +
                 ".longtxt{font-size:80%;border: 1px solid black;border-collapse:collapse;vertical-align: top;}" +
@@ -395,24 +397,8 @@ namespace Manager_riparazioni
                 .Portrait()
                 .Comressed()
                 .Content();
-
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.FileName = finalName;
-            dlg.Filter = "PDF Document|pdf";
-            dlg.AddExtension = true;
-            DialogResult result = dlg.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                // Open document 
-                var filename = dlg.FileName;
-                if (!filename.Contains(".pdf"))
-                    filename += ".pdf";
-                var file = File.Open(filename, FileMode.OpenOrCreate);
-                var plik = new BinaryWriter(file);
-                plik.Write(pdf);
-                plik.Close();
-            }
+            File.WriteAllBytes(path, pdf);
+            Process.Start(new ProcessStartInfo(@path) { UseShellExecute = true });
         }
 
         private void linkLabel_customer_name_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
