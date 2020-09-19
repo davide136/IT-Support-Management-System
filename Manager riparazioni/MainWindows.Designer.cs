@@ -57,9 +57,10 @@ namespace Manager_riparazioni
             // 
             // button_new_customer
             // 
-            this.button_new_customer.Location = new System.Drawing.Point(60, 677);
+            this.button_new_customer.Location = new System.Drawing.Point(42, 406);
+            this.button_new_customer.Margin = new System.Windows.Forms.Padding(2);
             this.button_new_customer.Name = "button_new_customer";
-            this.button_new_customer.Size = new System.Drawing.Size(178, 74);
+            this.button_new_customer.Size = new System.Drawing.Size(125, 44);
             this.button_new_customer.TabIndex = 1;
             this.button_new_customer.Text = "Nuovo Cliente";
             this.button_new_customer.UseVisualStyleBackColor = true;
@@ -67,9 +68,10 @@ namespace Manager_riparazioni
             // 
             // button_customers_list
             // 
-            this.button_customers_list.Location = new System.Drawing.Point(309, 677);
+            this.button_customers_list.Location = new System.Drawing.Point(216, 406);
+            this.button_customers_list.Margin = new System.Windows.Forms.Padding(2);
             this.button_customers_list.Name = "button_customers_list";
-            this.button_customers_list.Size = new System.Drawing.Size(178, 74);
+            this.button_customers_list.Size = new System.Drawing.Size(125, 44);
             this.button_customers_list.TabIndex = 2;
             this.button_customers_list.Text = "Elenco Clienti";
             this.button_customers_list.UseVisualStyleBackColor = true;
@@ -77,9 +79,10 @@ namespace Manager_riparazioni
             // 
             // button_repairs__archive
             // 
-            this.button_repairs__archive.Location = new System.Drawing.Point(1180, 677);
+            this.button_repairs__archive.Location = new System.Drawing.Point(826, 406);
+            this.button_repairs__archive.Margin = new System.Windows.Forms.Padding(2);
             this.button_repairs__archive.Name = "button_repairs__archive";
-            this.button_repairs__archive.Size = new System.Drawing.Size(178, 74);
+            this.button_repairs__archive.Size = new System.Drawing.Size(125, 44);
             this.button_repairs__archive.TabIndex = 3;
             this.button_repairs__archive.Text = "Archivio Riparazioni";
             this.button_repairs__archive.UseVisualStyleBackColor = true;
@@ -88,18 +91,20 @@ namespace Manager_riparazioni
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 84);
+            this.label1.Location = new System.Drawing.Point(42, 50);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 25);
+            this.label1.Size = new System.Drawing.Size(46, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "DB URI:";
             // 
             // label_uri
             // 
             this.label_uri.AutoSize = true;
-            this.label_uri.Location = new System.Drawing.Point(163, 84);
+            this.label_uri.Location = new System.Drawing.Point(114, 50);
+            this.label_uri.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_uri.Name = "label_uri";
-            this.label_uri.Size = new System.Drawing.Size(40, 25);
+            this.label_uri.Size = new System.Drawing.Size(25, 15);
             this.label_uri.TabIndex = 3;
             this.label_uri.TabStop = true;
             this.label_uri.Text = "URI";
@@ -107,26 +112,29 @@ namespace Manager_riparazioni
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 125);
+            this.label2.Location = new System.Drawing.Point(42, 75);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 25);
+            this.label2.Size = new System.Drawing.Size(42, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "STATO:";
             // 
             // label_status
             // 
             this.label_status.AutoSize = true;
-            this.label_status.Location = new System.Drawing.Point(163, 125);
+            this.label_status.Location = new System.Drawing.Point(114, 75);
+            this.label_status.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_status.Name = "label_status";
-            this.label_status.Size = new System.Drawing.Size(72, 25);
+            this.label_status.Size = new System.Drawing.Size(45, 15);
             this.label_status.TabIndex = 5;
             this.label_status.Text = "STATUS";
             // 
             // button_connect
             // 
-            this.button_connect.Location = new System.Drawing.Point(949, 84);
+            this.button_connect.Location = new System.Drawing.Point(664, 50);
+            this.button_connect.Margin = new System.Windows.Forms.Padding(2);
             this.button_connect.Name = "button_connect";
-            this.button_connect.Size = new System.Drawing.Size(409, 74);
+            this.button_connect.Size = new System.Drawing.Size(286, 44);
             this.button_connect.TabIndex = 0;
             this.button_connect.Text = "Connetti";
             this.button_connect.UseVisualStyleBackColor = true;
@@ -140,7 +148,8 @@ namespace Manager_riparazioni
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1422, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(995, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "Menu";
             // 
@@ -149,13 +158,13 @@ namespace Manager_riparazioni
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(141, 34);
+            this.mnuExit.Size = new System.Drawing.Size(93, 22);
             this.mnuExit.Text = "E&xit";
             this.mnuExit.Click += new System.EventHandler(this.MnuExit_Clicked);
             // 
@@ -164,13 +173,13 @@ namespace Manager_riparazioni
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 22);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(178, 34);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.Tools_clicked);
             // 
@@ -231,9 +240,10 @@ namespace Manager_riparazioni
             // 
             this.checkbox_hide_finnished.AutoSize = true;
             this.checkbox_hide_finnished.Enabled = false;
-            this.checkbox_hide_finnished.Location = new System.Drawing.Point(60, 628);
+            this.checkbox_hide_finnished.Location = new System.Drawing.Point(42, 377);
+            this.checkbox_hide_finnished.Margin = new System.Windows.Forms.Padding(2);
             this.checkbox_hide_finnished.Name = "checkbox_hide_finnished";
-            this.checkbox_hide_finnished.Size = new System.Drawing.Size(142, 29);
+            this.checkbox_hide_finnished.Size = new System.Drawing.Size(96, 19);
             this.checkbox_hide_finnished.TabIndex = 1;
             this.checkbox_hide_finnished.Text = "Hide finished";
             this.checkbox_hide_finnished.UseVisualStyleBackColor = true;
@@ -252,21 +262,22 @@ namespace Manager_riparazioni
             this.col_date_end,
             this.col_device,
             this.col_obj});
-            this.dataGridView1.Location = new System.Drawing.Point(60, 190);
+            this.dataGridView1.Location = new System.Drawing.Point(42, 114);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1298, 410);
+            this.dataGridView1.Size = new System.Drawing.Size(909, 246);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.Text = "dataGridView1";
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // MainWindows
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1422, 805);
+            this.ClientSize = new System.Drawing.Size(995, 483);
             this.Controls.Add(this.checkbox_hide_finnished);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_connect);
@@ -279,6 +290,7 @@ namespace Manager_riparazioni
             this.Controls.Add(this.button_new_customer);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainWindows";
             this.Text = "Manager Riparazioni";
             this.menuStrip1.ResumeLayout(false);

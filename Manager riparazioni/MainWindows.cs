@@ -204,7 +204,6 @@ namespace Manager_riparazioni
                 string objective = "";
                 if (!reader.IsDBNull(7))
                     objective = reader.GetString(7);
-
                 customer_id = "";
                 if (!reader.IsDBNull(8))
                     customer_id = reader.GetString(8);
@@ -220,10 +219,7 @@ namespace Manager_riparazioni
                     );
             }
             reader.Close();
-            dataGridView1.AutoResizeColumns();
-            dataGridView1.AutoResizeColumnHeadersHeight();
             dataGridView1.Sort(dataGridView1.Columns[2], ListSortDirection.Ascending);
-
             checkbox_hide_finnished.Checked = true;
             checkbox_hide_finnished_CheckedChanged(null, null);
         }
