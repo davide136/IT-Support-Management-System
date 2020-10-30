@@ -20,7 +20,7 @@ namespace Manager_riparazioni
 
         private void LoadData()
         {
-            string query = 
+            string query =
                 Properties.Settings.Default.query_select_customer_with_id +
                 customer_index.ToString();
 

@@ -48,7 +48,7 @@ namespace Manager_riparazioni
                 Properties.Settings.Default.col_repairs_id_customer;
                 existingRepair = true;
             }
-                
+
 
             string query = "" +
                 "select " +
@@ -364,7 +364,7 @@ namespace Manager_riparazioni
 
         private void Print_Click(object sender, EventArgs e)
         {
-            string path = Directory.GetCurrentDirectory() + "\\tmp.pdf" ;
+            string path = Directory.GetCurrentDirectory() + "\\tmp.pdf";
 
             string head = "<html><head><style>" +
                 ".tbl{width: 100%;height: 50%;font-size: 200%;border: 1px solid black;border-collapse:collapse;}" +
@@ -381,14 +381,14 @@ namespace Manager_riparazioni
 
             string body = "<table class=\"tbl\">" + shrtTxtStSpanned +
                 finalName + endRow + shrtTxtSt +
-                phone + middleColumn + 
+                phone + middleColumn +
                 load_date + endRow + shrtTxtStSpanned +
                 device_model + endRow + longTxtStSpanned +
-                objective + endRow + longTxtStSpanned + 
-                notes + endRow + "</table>" ;
+                objective + endRow + longTxtStSpanned +
+                notes + endRow + "</table>";
             string html = head + body + body + endHtml;
 
-            Debug.WriteLine(html );
+            Debug.WriteLine(html);
             var pdf = Pdf
                 .From(html)
                 .OfSize(PaperSize.A4)

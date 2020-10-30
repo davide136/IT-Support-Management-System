@@ -191,7 +191,15 @@ namespace Manager_riparazioni
 
                 string date_start = "";
                 if (!reader.IsDBNull(4))
+                {
                     date_start = reader.GetString(4);
+                    string day = date_start.Substring(0, 2);
+                    string month = date_start.Substring(3, 2);
+                    string year = date_start.Substring(6, 4);
+                    string hour = date_start.Substring(11, 2);
+                    string minute = date_start.Substring(14, 2);
+                    date_start = year + "/" + month + "/" + day + " " + hour + ":" + minute;
+                }
 
                 string date_end = "";
                 if (!reader.IsDBNull(5))
@@ -246,7 +254,7 @@ namespace Manager_riparazioni
             Repair repair = new Repair(customer_id, repair_index);
             DialogResult result = repair.ShowDialog();
             if (result == DialogResult.OK)
-                UpdateUI();            
+                UpdateUI();
         }
 
         private void checkbox_hide_finnished_CheckedChanged(object sender, EventArgs e)

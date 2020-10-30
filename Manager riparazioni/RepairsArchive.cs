@@ -3,7 +3,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Data;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Manager_riparazioni
@@ -51,7 +50,15 @@ namespace Manager_riparazioni
 
                 String date_start = "";
                 if (!reader.IsDBNull(4))
+                {
                     date_start = reader.GetString(4);
+                    string day = date_start.Substring(0, 2);
+                    string month = date_start.Substring(3, 2);
+                    string year = date_start.Substring(6, 4);
+                    string hour = date_start.Substring(11, 2);
+                    string minute = date_start.Substring(14, 2);
+                    date_start = year + "/" + month + "/" + day + " " + hour + ":" + minute;
+                }
 
                 String date_end = "";
                 if (!reader.IsDBNull(5))
@@ -66,7 +73,7 @@ namespace Manager_riparazioni
                     objective = reader.GetString(7);
 
                 if (!reader.IsDBNull(8))
-                    customer_id.Add( reader.GetString(8) );
+                    customer_id.Add(reader.GetString(8));
 
                 dataTable.Rows.Add(
                     repair_id,
@@ -126,7 +133,7 @@ namespace Manager_riparazioni
             dataTable.DefaultView.RowFilter = string.Format(
                 "Name LIKE '%{0}%' OR " +
                 "Device LIKE '%{0}%' OR " +
-                "'Rep. ID' LIKE '%{0}%'", 
+                "'Rep. ID' LIKE '%{0}%'",
                 textBox_filter.Text);
         }
 
@@ -138,7 +145,7 @@ namespace Manager_riparazioni
         private void button_open_Click(object sender, EventArgs e)
         {
             Object repair_index = dataGridView1.CurrentRow.Cells[0].Value;
-            Repair customer = new Repair(customer_id[dataGridView1.CurrentRow.Index],repair_index);
+            Repair customer = new Repair(customer_id[dataGridView1.CurrentRow.Index], repair_index);
             DialogResult result = customer.ShowDialog();
             if (result == DialogResult.OK)
                 UpdateUI();
